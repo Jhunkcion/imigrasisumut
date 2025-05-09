@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\About;
 use App\Category;
 use App\Article;
+use App\News;
 
 class DataController extends Controller
 {
@@ -107,5 +108,4 @@ class DataController extends Controller
         }
         
     }
-
 }

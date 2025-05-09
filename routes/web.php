@@ -11,7 +11,7 @@ Route::get('/contact', 'UserController@contact')->name('contact');
 Route::prefix('admin')->group(function(){
 
   Route::get('/', function(){
-    return view('auth/login');
+    return view('auth/login');  
   });
   
   // handle route register

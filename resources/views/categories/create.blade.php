@@ -25,7 +25,7 @@
                                 <div class="invalid-feedback"> {{$errors->first('name')}}</div>
                             </div>
                             <div class="mb-3">
-                                <label for="description" class="font-weight-bold">Category Description</label>
+                                <label for="description" class="font-weight-bold">Date</label>
                                 <textarea type="text" name="description" placeholder="Category Description..." class="form-control {{$errors->first('description') ? "is-invalid" : ""}}" required>{{old('description')}}</textarea>
                                 <div class="invalid-feedback"> {{$errors->first('description')}}</div>
                             </div>

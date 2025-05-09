@@ -30,3 +30,75 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+/*Carousel Card */
+let currentIndex = 0;
+let cardWidth = 0;
+let carousel;
+let cards;
+let totalCards;
+
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("DOMContentLoaded fired - carousel script running");
+    carousel = document.getElementById("cardcar");
+    cards = document.querySelectorAll("#cardcar .card");
+    totalCards = cards.length;
+
+    if (totalCards > 0) {
+        cardWidth = cards[0].offsetWidth + 16; // 16 = gap-4 (1rem)
+
+        // Clone first card and append to the end for smooth looping
+        const firstCardClone = cards[0].cloneNode(true);
+        carousel.appendChild(firstCardClone);
+        totalCards += 1;
+    }
+
+    function updateCarousel(animate = true) {
+        if (animate) {
+            carousel.style.transition = "transform 0.3s ease-in-out";
+        } else {
+            carousel.style.transition = "none";
+        }
+        carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    }
+
+    window.nextCard = function () {
+        console.log("nextCard called");
+        if (currentIndex < totalCards - 1) {
+            currentIndex++;
+            updateCarousel();
+        }
+        if (currentIndex === totalCards - 1) {
+            // After transition to cloned first card, reset to original first card instantly
+            setTimeout(() => {
+                carousel.style.transition = "none";
+                currentIndex = 0;
+                updateCarousel(false);
+            }, 300); // match transition duration
+        }
+    };
+
+    window.prevCard = function () {
+        console.log("prevCard called");
+        if (currentIndex === 0) {
+            // Jump to cloned last card instantly
+            carousel.style.transition = "none";
+            currentIndex = totalCards - 1;
+            updateCarousel(false);
+            // Then move to previous card with animation
+            setTimeout(() => {
+                carousel.style.transition = "transform 0.3s ease-in-out";
+                currentIndex--;
+                updateCarousel();
+            }, 20);
+        } else {
+            currentIndex--;
+            updateCarousel();
+        }
+    };
+
+    // Auto-play tiap 0.5 detik
+    setInterval(() => {
+        window.nextCard();
+    }, 500);
+});

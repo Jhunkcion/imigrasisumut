@@ -27,13 +27,15 @@ body {
   text-decoration: none;
 }
 
+
+
 .link-hover:hover{
   color: #045bb8 !important;
 }
 
 p {
   padding: 0;
-  margin: 0 0 30px 0;
+  margin: 0 0 0px 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -280,7 +282,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 8px 10px 8px;
   text-decoration: none;
   display: inline-block;
-  color: #fff;
+  color: #5b1741;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   text-transform: uppercase;
@@ -529,8 +531,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: left;
 }
 
-
-
 /* About Us Section
 --------------------------------*/
 #about {
@@ -624,7 +624,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 50px;
   text-align: center;
   border: 1px solid #e6e6e6;
-  height: 200px;
+  height: 250px;
   position: relative;
   background: #fafafa;
 }
@@ -728,98 +728,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 #call-to-action .cta-btn:hover {
   background: #2dc997;
   border: 2px solid #2dc997;
-}
-
-/* category Section
---------------------------------*/
-#category {
-  background: #fff;
-  padding: 80px 0;
-}
-
-#category #category-wrapper {
-  padding-right: 15px;
-}
-
-#category #category-flters {
-  padding: 0;
-  margin: 0 0 45px 0;
-  list-style: none;
-  text-align: center;
-}
-
-#category #category-flters li {
-  cursor: pointer;
-  margin: 0 10px;
-  display: inline-block;
-  padding: 10px 22px;
-  font-size: 12px;
-  line-height: 20px;
-  color: #666666;
-  border-radius: 4px;
-  text-transform: uppercase;
-  background: #fff;
-  margin-bottom: 5px;
-  transition: all 0.3s ease-in-out;
-}
-
-#category #category-flters li:hover, #category #category-flters li.filter-active {
-  background: #2dc997;
-  color: #fff;
-}
-
-#category .category-item {
-  position: relative;
-  height: 200px;
-  overflow: hidden !important;
-  margin-bottom: 15px;
-  transition: all 350ms ease;
-  transform: scale(1);
-}
-
-#category .category-item a {
-  display: block;
-  margin-right: 15px;
-}
-
-#category .category-item img {
-  position: relative;
-  top: 0;
-  transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  /* width:100%; */
-}
-
-#category .category-item .details {
-  height: 50px;
-  background: #2dc997;
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  bottom: -50px;
-  transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-#category .category-item .details h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-  padding: 8px 0 2px 8px;
-  margin: 0;
-}
-
-#category .category-item .details span {
-  display: block;
-  color: #fff;
-  font-size: 13px;
-  padding-left: 8px;
-}
-
-#category .category-item:hover .details {
-  bottom: 0;
-}
-
-#category .category-item:hover img {
-  top: -30px;
 }
 
 /* Contact Section
