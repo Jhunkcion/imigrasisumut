@@ -1,76 +1,28 @@
-@extends('layouts.user')
+@extends('layouts.user') {{-- sesuaikan dengan layout kamu --}}
 
-@section('header')
-    <style>
-        #hero{
-            background: url('{{asset('user/images/Tugu-Jogja.png')}}') top center;
-            background-repeat: no-repeat;
-            width:100%;
-            background-size:cover;
-        }
-        .form-control:focus {
-          box-shadow: none;
-        }
-
-        .form-control::placeholder {
-          font-size: 0.95rem;
-          color: #aaa;
-          font-style: italic;
-        }
-        .article{
-          line-height: 1.6;
-          font-size: 15px;
-        } 
-    </style>    
-@endsection
-
-@section('hero')
-    <h1>Blog Jogja-Travel</h1>
-    <h2>Kumpulan artikel-artikel wisata Jogja, Tips travelling, dan kesehatan</h2>
-@endsection
-
-
-@section('content')  
-      <!--========================== Article Section ============================-->
-      <section id="about">
-        <div class="container wow fadeIn">
-
-          <div class="row">
-            <div class="col-9">
-              
-              @if (empty(request()->segment(2)) )
-                @component('user.component.all_blog', ['articles'=> $articles])
-                @endcomponent
-              @else
-                @component('user.component.single_blog', ['article'=> $articles])
-                @endcomponent
-              @endif
-
-
-            </div>
-            <div class="col-3">
-                <form action="{{route('blog')}}" class="mt-5">
-                  <div class="input-group mb-4 border rounded-pill shadow-lg" style="border-radius:10px; box-shadow: 3px 3px 8px grey;">
-                    <input type="text" name="s" value="{{Request::get('s')}}" placeholder="Apa yang ingin anda cari?" class="form-control bg-none border-0" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
-                    <div class="input-group-append border-0">
-                      <button type="submit" class="btn text-success"><i class="fa fa-search"></i></button>
+@section('content')
+<section id="berita" class="blog-section">
+    <div class="container">
+        <h2 class="text-center">Ruang Berita</h2>
+        <div class="row">
+            @foreach ($articles as $article)
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        @if ($article->thumbnail)
+                            <img src="{{ asset('storage/' . $article->thumbnail) }}" class="card-img-top" alt="{{ $article->title }}">
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $article->title }}</h5>
+                            <p class="card-text">{{ Str::limit(strip_tags($article->content), 100) }}</p>
+                            <a href="{{ route('blog.show', $article->slug) }}" class="btn btn-primary">Baca Selengkapnya</a>
+                        </div>
                     </div>
-                  </div>
-                </form>
-                <div class="mb-3 font-weight-bold">Recent Posts</div>
-                @foreach ($recents as $recent)
-                  <div>
-                      <a href="{{route('blog.show', [$recent->slug])}}"> <i class="fa fa-dot-circle-o" aria-hidden="true"></i> 
-                        {{$recent->title}}
-                      </a>
-                      <hr >
-                  </div>
-                @endforeach
-            </div>
-          </div>
-
+                </div>
+            @endforeach
         </div>
-      </section><!-- #services -->
-  
-     
+        <div class="d-flex justify-content-center">
+            {{ $articles->links() }} {{-- jika pakai paginate --}}
+        </div>
+    </div>
+</section>
 @endsection

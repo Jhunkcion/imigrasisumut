@@ -41,6 +41,10 @@ Route::prefix('admin')->group(function(){
   Route::get('/abouts', 'AboutController@index')->name('abouts.index')->middleware('auth');
   Route::get('/abouts/{about}/edit', 'AboutController@edit')->name('abouts.edit')->middleware('auth');
   Route::put('/abouts/{about}', 'AboutController@update')->name('abouts.update')->middleware('auth');
-    
-    
+  
+
+  Route::get('/articles', 'UserController@blog')->name('articles.index');
+  Route::get('/articles/{slug}', 'UserController@show_article')->name('articles.show');
+
+
 });

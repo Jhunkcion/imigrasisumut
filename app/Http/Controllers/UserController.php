@@ -52,15 +52,18 @@ class UserController extends Controller
 
 
   public function show_article($slug)
-  {
-    $articles   = Article::where('slug', $slug)->first();
-    $recents    = Article::select('title','slug')->where('status', 'PUBLISH')->orderBy('created_at','desc')->limit(5)->get();
+{
+    $article = Article::where('slug', $slug)->firstOrFail();
+    $recents = Article::select('title', 'slug')->where('status', 'PUBLISH')->orderBy('created_at', 'desc')->limit(5)->get();
+
     $data = [
-      'articles'  => $articles,
-      'recents'   => $recents
+        'article'  => $article,
+        'recents'  => $recents
     ];
-    return view('user/blog', $data);
-  }
+
+    return view('user/blog-detail', $data); // Ubah ke view detail
+}
+
 
   public function destination(Request $request){
       $keyword    = $request->get('s') ? $request->get('s') : '';

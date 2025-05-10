@@ -10,7 +10,7 @@
 }
 
 #hero {
-    background: url('{{ asset('user/images/vb.jpg') }}') top center;
+    background: url('{{ asset('user/images/hero-bg.jpg') }}') top center;
 }
 
 .image-center {
@@ -339,8 +339,7 @@
     <div class="container wow fadeInUp">
         <div class="section-header">
             <h3 class="section-title">Berita</h3>
-            <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                doloremque</p>
+            <p class="section-description">Kumpulan berita terkini tentang Direktorat Jenderal Imigrasi</p>
         </div>
 
         <div class="news-grid"

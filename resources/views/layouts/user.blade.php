@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>IMIGRASI</title>
+    <title>Direktorat Jenderal Imigrasi</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -29,6 +29,7 @@
 
     @yield('header')
     <style>
+        
     .nav-menu>li {
         position: relative;
     }
@@ -40,9 +41,8 @@
         display: block;
     }
 
-    /* Style dropdown level 1 */
+    /* Dropdown level 1 */
     .nav-menu .dropdown-content {
-        display: none;
         position: absolute;
         top: 100%;
         left: 0;
@@ -50,19 +50,27 @@
         min-width: 200px;
         z-index: 1000;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        opacity: 0;
+        transform: translateY(10px);
+        visibility: hidden;
+        transition: opacity 0.5s ease, transform 2s ease;
+        pointer-events: none;
     }
 
     .nav-menu .dropdown:hover>.dropdown-content {
-        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        pointer-events: auto;
     }
 
-    /* Style dropdown level 2 dan 3 ke kanan */
+    /* Dropdown level 2 dan 3 */
     .dropdown-content .dropdown {
         position: relative;
     }
 
     .dropdown-content .dropdown-content-right {
-        display: none;
         position: absolute;
         top: 0;
         left: 100%;
@@ -70,10 +78,19 @@
         background: white;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         z-index: 1000;
+
+        opacity: 0;
+        transform: translateX(10px);
+        visibility: hidden;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        pointer-events: none;
     }
 
     .dropdown-content .dropdown:hover>.dropdown-content-right {
-        display: block;
+        opacity: 1;
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
     }
 
     /* Tampilan link */
@@ -85,7 +102,7 @@
     }
 
     .nav-menu a:hover {
-        background-color:rgb(17, 48, 79);
+        background-color: rgb(17, 48, 79);
         color: #007bff;
     }
 
@@ -103,51 +120,54 @@
     $url = request()->segment(1);
     @endphp
 
-    <!--========================== Header ============================-->
-    <header id="header">
-        <div class="container">
+    <header id="header" class="bg-[#003366] shadow-md py-2">
+    <div class="container mx-auto flex items-center justify-between">
+        <!-- Logo dan Judul -->
+        <a href="#hero" class="flex items-center gap-3 text-white">
+            <img src="{{ asset('user/images/logo2.png') }}" class="h-10 w-auto" alt="Logo" />
+            <span class="text-xl font-bold whitespace-nowrap">Imigrasi Sumut</span>
+        </a>
 
-            <div id="logo" class="pull-left">
-                <a href="#hero">
-                    <img src="{{asset('user/images/logo2.png')}}" style="margin: bottom 0.5em " /></img>
-                    <h2 class="d-inline text-light p-2">Imigrasi Sumut</h2>
-                </a>
-            </div>
+        <!-- Navigasi -->
+        <nav id="nav-menu-container">
+            <ul class="nav-menu flex gap-4 items-center">
+                <li class="">
+                    <a href="#hero" class="text-white hover:text-[#00bfff] transition">Beranda</a>
+                </li>
+                <li class="dropdown {{$url == 'destination' ? 'menu-active' : ''}}">
+                    <a href="#" class="text-white hover:text-[#00bfff] transition">Layanan Publik</a>
+                    <ul class="dropdown-content">
+                        <li class="dropdown">
+                            <a href="#">Berita Daerah</a>
+                            <ul class="dropdown-content-right">
+                                <li class="dropdown">
+                                    <a href="#">Sub Daerah A</a>
+                                    <ul class="dropdown-content-right">
+                                        <li><a href="#">Sub Sub A1</a></li>
+                                        <li><a href="#">Sub Sub A2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Sub Daerah B</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#news">Berita Nasional</a></li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="#about" class="text-white hover:text-[#00bfff] transition">Informasi Publik</a>
+                </li>
+                <li class="">
+                    <a href="#news" class="text-white hover:text-[#00bfff] transition">Berita</a>
+                </li>
+                 <li class="">
+                    <a href="#footer" class="text-white hover:text-[#00bfff] transition">Kontak</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    <li class="{{$url == 'home' ? 'menu-active' : ''}}">
-                        <a href="{{url('home')}}">Beranda</a>
-                    </li>
 
-                    <li class="dropdown {{$url == 'destination' ? 'menu-active' : ''}}">
-                        <a href="#">Layanan Publik</a>
-                        <ul class="dropdown-content">
-                            <li class="dropdown">
-                                <a href="#">Berita Daerah</a>
-                                <ul class="dropdown-content-right">
-                                    <li class="dropdown">
-                                        <a href="#">Sub Daerah A</a>
-                                        <ul class="dropdown-content-right">
-                                            <li><a href="#">Sub Sub A1</a></li>
-                                            <li><a href="#">Sub Sub A2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Sub Daerah B</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Berita Nasional</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="{{$url == 'contact' ? 'menu-active' : ''}}">
-                        <a href="{{url('contact')}}">Informasi Publik</a>
-                </ul>
-            </nav>
-
-            <!-- #nav-menu-container -->
-        </div>
-    </header><!-- #header -->
 
     <!--========================== Hero Section ============================-->
     <section id="hero">
@@ -256,4 +276,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
+
 </html>
