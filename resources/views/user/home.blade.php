@@ -10,7 +10,7 @@
 }
 
 #hero {
-    background: url('{{ asset('user/images/hero-bg.jpg') }}') top center;
+    background: url('{{ asset('') }}') top center;
 }
 
 .image-center {
@@ -243,11 +243,19 @@
                 <p>{!! $about[0]->caption !!}</p>
             </div>
             <div class="col-lg-5 background order-lg-2 order-1 wow fadeInRight"
-                style="background: url('{{ asset('about_image/' . $about[0]->image) }}') center top no-repeat; background-size: cover;">
+                style="position: relative; background: url('{{ asset('about_image/' . $about[0]->image) }}') center top no-repeat; background-size: cover;">
+                
+                <a href="{{ url('/contact') }}" 
+                   class="btn btn-primary" 
+                   style="position: absolute; bottom: 20px; left: 20px; z-index: 10; background-color: rgba(0,0,0,0.7); color: #fff; padding: 10px 15px; border-radius: 5px; text-decoration: none;">
+                    Cek Selengkapnya
+                </a>
+                
             </div>
         </div>
     </div>
 </section>
+
 
 <!--========================== Services Section ============================-->
 <section id="services">

@@ -16,7 +16,7 @@ Route::prefix('admin')->group(function(){
   
   // handle route register
   Route::match(["GET", "POST"], "/register", function(){ 
-    return redirect("/login"); 
+     return redirect("/login"); 
   })->name("register");
   
   Auth::routes();
@@ -33,7 +33,8 @@ Route::prefix('admin')->group(function(){
   // route article
   Route::post('/articles/upload', 'ArticleController@upload')->name('articles.upload')->middleware('auth');
   Route::resource('/articles', 'ArticleController')->middleware('auth');
-  
+  Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
+
   // route destination
   Route::resource('/destinations', 'DestinationController')->middleware('auth');
     
@@ -43,8 +44,8 @@ Route::prefix('admin')->group(function(){
   Route::put('/abouts/{about}', 'AboutController@update')->name('abouts.update')->middleware('auth');
   
 
-  Route::get('/articles', 'UserController@blog')->name('articles.index');
-  Route::get('/articles/{slug}', 'UserController@show_article')->name('articles.show');
+  //Route::get('/articles', 'UserController@blog')->name('articles.index');
+  //Route::get('/articles/{slug}', 'UserController@show_article')->name('articles.show');
 
 
 });

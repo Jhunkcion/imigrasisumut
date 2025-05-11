@@ -74,9 +74,10 @@
                                 <tr>
                                     <td>{{$index+1}}</td>
                                     <td>
-                                        <a href="{{route('articles.edit', [$article->id])}}" style="color:#00838f;" class="underline">
-                                            <span class="d-block">{{$article->title}}</span>
-                                        </a>
+                                    <a href="{{ route('articles.show', [$article->id]) }}" style="color:#00838f;" class="underline">
+                                        <span class="d-block">{{ $article->title }}</span>
+                                    </a>
+
 
 
                                         @foreach($article->categories as $value)

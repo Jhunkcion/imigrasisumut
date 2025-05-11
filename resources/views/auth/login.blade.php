@@ -199,7 +199,7 @@
                 In this kind of post, the blogger introduces someone and provides context. This is a transcript of the
                 interview.
             </p>
-            <img src="{{ asset('user/images/logo3.jpg') }}"  alt="Visual">
+            <img src="{{ asset('user/images/logo2a.png') }}"  alt="Visual">
         </div>
     </div>
 </body>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-
 use App\Article;
 use Illuminate\Http\Request;
 
@@ -14,6 +13,8 @@ class ArticleController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
+  
+
   public function index(Request $request)
   {
     $status     = $request->get('status');
@@ -89,7 +90,7 @@ class ArticleController extends Controller
    */
   public function show(Article $article)
   {
-      //
+    return view('articles.show', compact('article'));
   }
 
   /**

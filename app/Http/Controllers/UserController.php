@@ -61,7 +61,7 @@ class UserController extends Controller
         'recents'  => $recents
     ];
 
-    return view('user/blog-detail', $data); // Ubah ke view detail
+    return view('user/', $data); // Ubah ke view detail
 }
 
 
