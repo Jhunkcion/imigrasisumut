@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Berita;
 use App\Article;
 use Illuminate\Http\Request;
 
@@ -19,13 +19,13 @@ class ArticleController extends Controller
   {
     $status     = $request->get('status');
     $keyword    = $request->get('keyword') ? $request->get('keyword') : '';
-    $category   = $request->get('c') ? $request->get('c') : '';
+    $berita   = $request->get('c') ? $request->get('c') : '';
 
     if($status){
       // $articles = \App\Article::where('status', strtoupper($status))->where('title', 'LIKE', "%$keyword%")->paginate(10);
-      $articles = Article::with('categories')
-                          ->whereHas('categories', function($q) use($category){
-                            $q->where('name', 'LIKE', "%$category%");
+      $articles = Article::with('beritas')
+                          ->whereHas('beritas', function($q) use($berita){
+                            $q->where('name', 'LIKE', "%$berita%");
                           })
                           ->where('status', strtoupper($status))
                           ->where('title', 'LIKE', "%$keyword%")
@@ -33,10 +33,10 @@ class ArticleController extends Controller
                           ->paginate(10);
 
     }else{
-      // $articles = \App\Article::with('categories')->where('title', 'LIKE', "%$keyword%")->paginate(10);
-      $articles = Article::with('categories')
-                          ->whereHas('categories', function($q) use($category) {
-                            $q->where('name', 'LIKE', "%$category%"); 
+      // $articles = \App\Article::with('beritas')->where('title', 'LIKE', "%$keyword%")->paginate(10);
+      $articles = Article::with('beritas')
+                          ->whereHas('beritas', function($q) use($berita) {
+                            $q->where('name', 'LIKE', "%$berita%"); 
                           })
                           ->where('title', 'LIKE', "%$keyword%")
                           ->orderBy('created_at', 'desc')
@@ -76,10 +76,10 @@ class ArticleController extends Controller
     $new_articles->status       = $request->get('save_action');
     $new_articles->save();
     
-    // save in table article category
-    $new_articles->categories()->attach($request->get('categories'));
+    // save in table article berita
+    $new_articles->beritas()->attach($request->get('beritas'));
 
-    return redirect()->route('articles.index')->with('success', 'Article successfully created');
+    return redirect()->route('articles.index')->with('success', 'Artikel Berhasil Dibuat');
 }
 
   /**
@@ -122,10 +122,10 @@ class ArticleController extends Controller
     $article->status       = $request->get('save_action');
     $article->update_by    = \Auth::user()->id;
 
-    $article->categories()->sync($request->get('categories'));
+    $article->beritas()->sync($request->get('beritas'));
 
     $article->save();
-    return redirect()->route('articles.index')->with('success', 'Category successfully update.');
+    return redirect()->route('articles.index')->with('success', 'Artikel sukses diupdate.');
   }
 
   /**
@@ -139,7 +139,7 @@ class ArticleController extends Controller
     $article = \App\Article::findOrFail($id);
     $article->forceDelete();
 
-    return redirect()->route('articles.index')->with('success', 'Article permanenly delete');
+    return redirect()->route('articles.index')->with('success', 'Artikel Terhapus!!');
   }
 
   public function upload(Reques $request){

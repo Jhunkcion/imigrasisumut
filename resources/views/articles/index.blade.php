@@ -2,7 +2,7 @@
 
 @section('title', 'Articles')
 
-@section('breadcrumbs', 'Overview Articles')
+@section('breadcrumbs', ' Artikel')
 
 @section('css')
     <style>
@@ -80,7 +80,7 @@
 
 
 
-                                        @foreach($article->categories as $value)
+                                        @foreach($article->beritas as $value)
                                             <a class="d-inline underline" href="{{route('articles.index', ['c' =>$value->name])}}">
                                                 <span class="text-muted font-italic" style="font-size:10px; margin-top:10px ;line-height: 60%">{{$value->name}},</span>
                                             </a>

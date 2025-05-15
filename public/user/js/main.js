@@ -139,3 +139,51 @@ jQuery(document).ready(function( $ ) {
 // custom code
 
 });
+
+/* Carousel javaScript */
+document.addEventListener("DOMContentLoaded", function () {
+  const items = document.querySelectorAll(".carousel-item");
+  const nextBtn = document.getElementById("next");
+  const prevBtn = document.getElementById("prev");
+  let currentIndex = 0;
+
+
+  function showItem(index) {
+      items.forEach((item, i) => {
+          item.classList.toggle("active", i === index);
+      });
+  }
+
+  nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % items.length;
+      showItem(currentIndex);
+  });
+
+  prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
+      showItem(currentIndex);
+  });
+
+  // Optional: auto-slide every 5 seconds
+  setInterval(() => {
+      currentIndex = (currentIndex + 1) % items.length;
+      showItem(currentIndex);
+  }, 5000);
+
+  function showItem(index) {
+      items.forEach((item, i) => {
+          item.classList.remove("active");
+          const caption = item.querySelector(".carousel-caption");
+          if (caption) caption.style.opacity = "0"; // reset caption
+      });
+  
+      const activeItem = items[index];
+      activeItem.classList.add("active");
+  
+      const caption = activeItem.querySelector(".carousel-caption");
+      if (caption) {
+          caption.style.opacity = "1";
+          caption.style.animation = "fadeInUp 1s ease";
+      }
+  }
+});

@@ -13,11 +13,11 @@
                 <p class="text-muted">Dipublikasikan pada {{ $article->created_at->format('d M Y') }}</p>
 
                 {{-- Kategori --}}
-                @if ($article->categories && $article->categories->count())
+                @if ($article->beritas && $article->beritas->count())
                     <div class="mb-3">
                         <strong>Kategori:</strong>
-                        @foreach ($article->categories as $category)
-                            <span class="badge badge-info">{{ $category->name }}</span>
+                        @foreach ($article->beritas as $berita)
+                            <span class="badge badge-info">{{ $berita->name }}</span>
                         @endforeach
                     </div>
                 @endif

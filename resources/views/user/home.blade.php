@@ -1,127 +1,36 @@
 @extends('layouts.user')
 
-@section('header')
-<style>
-.full-img {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 180px;
-}
-
-#hero {
-    background: url('{{ asset('') }}') top center;
-}
-
-.image-center {
-    display: block;
-    margin-left: 6.5px;
-    margin-right: 6.5px;
-    width: 100%;
-}
-
-/* Tambahan styling untuk tombol carousel */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    width: 10px;
-    height: 10px;
-    background-size: 100% 100%;
-    color: rgb(10, 5, 5);
-
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    top: 300px;
-    width: 5%;
-    height: 5%;
-    background-color: rgb(240, 207, 207);
-}
-
-/* Tambahan opsional untuk posisi */
-.carousel-control-prev {
-    left: 10px;
-}
-
-.carousel-control-next {
-    right: 10px;
-}
-
-/*carousel card */
-.carousel-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
-#cardcar {
-    display: flex;
-    gap: 1rem;
-    transition: transform 0.3s ease-in-out;
-}
-
-.car-card {
-    min-width: 250px;
-    max-width: 300px;
-    border-radius: 20px;
-    flex-shrink: 0;
-}
-
-.car-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    font-size: 20px;
-    padding: 10px;
-    z-index: 1;
-    cursor: pointer;
-    border-radius: 50%;
-}
-
-.car-nav.left {
-    left: 0;
-}
-
-.car-nav.right {
-    right: 0;
-}
-</style>
-@endsection
-
-@section('hero')
-
-<!-- Carousel Header -->
-<section id="carouselHero" class="carousel slide" data-bs-ride="carousel" style="height: 100vh; overflow: hidden;">
-    <div class="carousel-inner h-100%">
-        <div class="carousel-item active h-100%">
-            <img src="{{ asset('user/images/vb.jpg') }}" class="d-block w-100 h-100" style="object-fit: cover;"
-                alt="Slide 1">
-
-        </div>
-        <div class="carousel-item h-100">
-            <img src="{{ asset('user/images/vb.jpg') }}" class="d-block w-100 h-100" style="object-fit: cover;"
-                alt="Slide 2">
-            <div class="carousel-caption d-none d-md-block">
-                <h2 class="fw-bold text-white">Layanan Prima untuk Anda</h2>
-            </div>
-        </div>
-    </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHero" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselHero" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </button>
-</section>
-
-
-@endsection
 
 @section('content')
+
+<!-- Section carousel -->
+<div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <div class="carousel-item active">
+                <img src="{{ asset('user/images/image.png') }}" alt="Slide 1">
+                <div class="carousel-caption">
+                    <h2>Layanan Imigrasi Modern</h2>
+                    <p>Kami menghadirkan kemudahan layanan melalui sistem digital terbaru.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('user/images/image.png') }}" alt="Slide 2">
+                <div class="carousel-caption">
+                    <h2>Antrean Online Praktis</h2>
+                    <p>Daftar layanan tanpa harus datang langsung ke kantor.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('user/images/hero-bg.jpg') }}" alt="Slide 3">
+                <div class="carousel-caption">
+                    <h2>Peningkatan SDM Keimigrasian</h2>
+                    <p>Kami berkomitmen memberikan pelayanan terbaik melalui pelatihan berkelanjutan.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control prev" id="prev">&#10094;</button>
+        <button class="carousel-control next" id="next">&#10095;</button>
+    </div>
 
 <!--========================== Layanan Section ============================-->
 <section class="py-5 bg-white">
@@ -172,7 +81,7 @@
                                 rusak...</p>
                         </div>
                     </div>
-                    
+
                     <div class="card car-card">
                         <img src="{{ asset('user/images/image.png') }}" class="card-img-top rounded-top"
                             alt="Paspor Hilang">
@@ -244,17 +153,68 @@
             </div>
             <div class="col-lg-5 background order-lg-2 order-1 wow fadeInRight"
                 style="position: relative; background: url('{{ asset('about_image/' . $about[0]->image) }}') center top no-repeat; background-size: cover;">
-                
-                <a href="{{ url('/contact') }}" 
-                   class="btn btn-primary" 
+
+                <a href="{{ url('/contact') }}"
+                   class="btn btn-primary"
                    style="position: absolute; bottom: 20px; left: 20px; z-index: 10; background-color: rgba(0,0,0,0.7); color: #fff; padding: 10px 15px; border-radius: 5px; text-decoration: none;">
                     Cek Selengkapnya
                 </a>
-                
+
             </div>
         </div>
     </div>
 </section>
+
+
+<!--========================== Sosial Media Section ============================-->
+<section id="sosial-media" style="background-color: #f9f9f9; padding: 50px 0;">
+            <div
+                style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 20px;">
+                <!-- Kartu Sosial Media -->
+                <div class="social-media-cards" style="flex: 1; min-width: 250px;">
+                    <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 20px;">YUK FOLLOW JUGA <br>SOSIAL MEDIA
+                        KAMI
+                    </h2>
+                    <div class="social-link-wrapper">
+                        <a href="https://instagram.com/kanimjaksel" target="_blank" class="social-link">
+                            <i class="fab fa-instagram" style="color: #E4405F;"></i> Instagram
+                        </a>
+                        <a href="#"
+                            style="display: flex; align-items: center; background: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-decoration: none; color: black;">
+                            <i class="fab fa-x-twitter" style="font-size: 20px; margin-right: 12px;"></i> Twitter
+                        </a>
+                        <a href="#"
+                            style="display: flex; align-items: center; background: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-decoration: none; color: black;">
+                            <i class="fab fa-facebook-f" style="font-size: 20px; margin-right: 12px; color: #3b5998;"></i>
+                            Facebook
+                        </a>
+                        <a href="#"
+                            style="display: flex; align-items: center; background: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-decoration: none; color: black;">
+                            <i class="fab fa-tiktok" style="font-size: 20px; margin-right: 12px; color: black;"></i> TikTok
+                        </a>
+                        <a href="#"
+                            style="display: flex; align-items: center; background: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-decoration: none; color: black;">
+                            <i class="fab fa-youtube" style="font-size: 20px; margin-right: 12px; color: red;"></i> YouTube
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reel-gallery">
+  <a href="https://www.instagram.com/reel/DJJrkAMRClF/" target="_blank" class="reel-thumb-container">
+    <img src={{ asset('user/images/vb.jpg') }} alt="Reel 1" class="reel-thumb">
+    <i class="fas fa-play play-icon"></i>
+  </a>
+  <a href="https://www.instagram.com/reel/DIafvSxR983/" target="_blank" class="reel-thumb-container">
+    <img src="path/to/thumbnail2.jpg" alt="Reel 2" class="reel-thumb">
+    <i class="fas fa-play play-icon"></i>
+  </a>
+  <a href="https://www.instagram.com/reel/DI-2m0wR98B/" target="_blank" class="reel-thumb-container">
+    <img src="path/to/thumbnail3.jpg" alt="Reel 3" class="reel-thumb">
+    <i class="fas fa-play play-icon"></i>
+  </a>
+</div>
+
+        </section>
 
 
 <!--========================== Services Section ============================-->
@@ -352,16 +312,16 @@
 
         <div class="news-grid"
      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; padding: 20px;">
-    @foreach ($categories as $category)
+    @foreach ($beritas as $berita)
         <div class="news-card"
              style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background: #fff;">
             <a href="#" style="text-decoration: none; color: inherit;">
-                <img src="{{ asset('category_image/' . $category->image) }}"
-                     alt="{{ $category->name }}"
+                <img src="{{ asset('berita_image/' . $berita->image) }}"
+                     alt="{{ $berita->name }}"
                      style="width: 100%; height: 180px; object-fit: cover;">
                 <div style="padding: 15px;">
-                    <h4 class="news-title" style="margin: 0; font-weight: bold;">{{ $category->name }}</h4>
-                    <p class="news-date" style="color: #666; font-size: 14px;">{{ $category->description }}</p>
+                    <h4 class="news-title" style="margin: 0; font-weight: bold;">{{ $berita->name }}</h4>
+                    <p class="news-date" style="color: #666; font-size: 14px;">{{ $berita->description }}</p>
                 </div>
             </a>
         </div>
@@ -387,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function () {
     totalCards = cards.length;
 
     if (totalCards > 0) {
-        cardWidth = cards[0].offsetWidth + 16; // 16 = gap-4 (1rem)
+        cardWidth = cards[0].offsetWidth + 16;
 
         // Clone last card dan prepend
         const lastCardClone = cards[totalCards - 1].cloneNode(true);
@@ -399,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         totalCards += 2;
 
-        // Reset posisi awal ke index ke-1 (setelah clone awal)
+        // Set initial position
         carousel.style.transition = "none";
         carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
     }

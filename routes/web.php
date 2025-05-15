@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+
 Route::get('/', function(){return redirect('/home');});
 Route::get('/home', 'UserController@home')->name('home');
 Route::get('/blog', 'UserController@blog')->name('blog');
@@ -29,11 +31,18 @@ Route::prefix('admin')->group(function(){
   Route::delete('/categories/{category}/delete-permanent', 'CategoryController@deletePermanent')->name('categories.delete-permanent');
   Route::get('/ajax/categories/search', 'CategoryController@ajaxSearch');
   Route::resource('categories', 'CategoryController')->middleware('auth');
+
+  //  route berita
+  Route::get('/beritas/{berita}/restore', 'BeritaController@restore')->name('beritas.restore');
+  Route::delete('/beritas/{berita}/delete-permanent', 'BeritaController@deletePermanent')->name('beritas.delete-permanent');
+  Route::get('/ajax/beritas/search', 'BeritaController@ajaxSearch');
+  Route::resource('beritas', 'BeritaController')->middleware('auth');
+  
   
   // route article
-  Route::post('/articles/upload', 'ArticleController@upload')->name('articles.upload')->middleware('auth');
-  Route::resource('/articles', 'ArticleController')->middleware('auth');
-  Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
+  Route::post('/articles/upload', [ArticleController::class, 'upload'])->name('articles.upload')->middleware('auth');
+  Route::resource('/articles', ArticleController::class)->middleware('auth');
+
 
   // route destination
   Route::resource('/destinations', 'DestinationController')->middleware('auth');

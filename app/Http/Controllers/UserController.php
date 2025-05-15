@@ -8,6 +8,7 @@ use App\Category;
 use App\About;
 use App\Article;
 use App\Destination;
+use App\Berita;
 
 class UserController extends Controller
 {
@@ -21,7 +22,7 @@ class UserController extends Controller
   public function home()
   {
     $data = [
-      'categories'    => Category::all(),
+      'beritas'    => Berita::all(),
       'about'         => About::all()
     ];
     return view('user/home', $data);
@@ -30,11 +31,11 @@ class UserController extends Controller
   public function blog(Request $request){
 
     $keyword    = $request->get('s') ? $request->get('s') : '';
-    $category   = $request->get('c') ? $request->get('c') : '';
+    $berita   = $request->get('c') ? $request->get('c') : '';
 
-    $articles = Article::with('categories')
-                ->whereHas('categories', function($q) use($category){
-                    $q->where('name', 'LIKE', "%$category%");
+    $articles = Article::with('beritas')
+                ->whereHas('beritas', function($q) use($berita){
+                    $q->where('name', 'LIKE', "%$berita%");
                 })
                 ->where('status', 'PUBLISH')
                 ->where('title', 'LIKE', "%$keyword%")

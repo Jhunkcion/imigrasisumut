@@ -43,6 +43,9 @@
                     <li class="{{$url=='categories'?'active':''}}">
                         <a href="{{url('admin/categories')}}"><i class="menu-icon fa fa-list-ul"></i>Categories </a>
                     </li>
+                    <li class="{{$url=='beritas'?'active':''}}">
+                        <a href="{{url('admin/beritas')}}"><i class="menu-icon fa fa-list-ul"></i>Berita </a>
+                    </li>
                     <li class="{{$url=='articles'?'active':''}}">
                         <a href="{{url('admin/articles')}}"> <i class="menu-icon fa fa-newspaper-o"></i> Articles</a>
                     </li>
@@ -146,7 +149,7 @@
                         Copyright &copy; 2025 Kyy
                     </div>
                     <div class="col-sm-6 text-right">
-                        Designed by <a href="https://colorlib.com">Colorlib</a>
+                        Designed by <a>pritus🤡</a>
                     </div>
                 </div>
             </div>

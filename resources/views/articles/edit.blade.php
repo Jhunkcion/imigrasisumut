@@ -30,8 +30,8 @@
                             <div class="invalid-feedback"> {{$errors->first('title')}}</div>
                         </div>
                         <div class="mb-3">
-                            <label for="category" class="d-block font-weight-bold">Category</label>
-                            <select name="categories[]" id="categories" multiple class="col-12"></select>
+                            <label for="berita" class="d-block font-weight-bold">berita</label>
+                            <select name="beritas[]" id="beritas" multiple class="col-12"></select>
                         </div>
                         <div class="mb-3">
                             <label for="content" class="font-weight-bold">Content</label>
@@ -58,14 +58,14 @@
         });
     </script>
 
-    {{-- category select2 --}}
+    {{-- berita select2 --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
     <script>
-        $('#categories').select2({
+        $('#beritas').select2({
             ajax: {
-                url             : '{{url("/admin/ajax/categories/search")}}',
+                url             : '{{url("/admin/ajax/beritas/search")}}',
                 processResults  : function(data){
                     return {
                         results: data.map(function(item){return {id: item.id, text: item.name} })
@@ -74,11 +74,11 @@
             }
         });
 
-        var categories = {!! $article->categories !!}
+        var beritas = {!! $article->beritas !!}
 
-            categories.forEach(function(category){
-                var option = new Option(category.name, category.id, true, true);
-                $('#categories').append(option).trigger('change');
+            beritas.forEach(function(berita){
+                var option = new Option(berita.name, berita.id, true, true);
+                $('#beritas').append(option).trigger('change');
             });
     </script>
 

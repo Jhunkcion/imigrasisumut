@@ -30,7 +30,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="category" class="font-weight-bold">Category</label>
-                                <select class="form-control" name="categories[]" id="categories" multiple></select>
+                                <select class="form-control" name="beritas[]" id="beritas" multiple></select>
                             </div>
                             <div class="mb-3">
                                 <label for="content" class="font-weight-bold">Content</label>
@@ -63,9 +63,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script>
-        $('#categories').select2({
+        $('#beritas').select2({
             ajax    : {
-                url             : '{{url("/admin/ajax/categories/search")}}',
+                url             : '{{url("/admin/ajax/beritas/search")}}',
                 processResults  : function(data){
                     return {
                         results : data.map(function(item){
