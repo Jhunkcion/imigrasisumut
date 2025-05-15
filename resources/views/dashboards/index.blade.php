@@ -9,7 +9,7 @@
 
     <style>
         .traffic-chart {
-            min-height: 335px;
+            min-height: 200px;
         }
     </style>
 @endsection

@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title','List Berita')
+@section('title','List Pengumuman')
 
-@section('breadcrumbs', 'Berita')
+@section('breadcrumbs', 'PENGUMUMAN')
 
 @section('content')
     <!-- Widgets  -->
@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="my-3 text-right">
-                            <a href="{{route('beritas.create')}}" class="btn btn-sm btn-success"> <i class="fa fa-plus"></i> Create</a>
+                            <a href="{{route('notices.create')}}" class="btn btn-sm btn-success"> <i class="fa fa-plus"></i> Create</a>
                         </div>
 
                         @if (session('success'))
@@ -28,7 +28,7 @@
                             <thead class="text-light" style="background-color:#33b751 !important">
                                 <tr class="text-center">
                                     <th style="width:10px">No</th>
-                                    <th>Berita</th>
+                                    <th>Pengumuman</th>
                                     <th>Judul</th>
                                     <th>Tanggal Dibuat</th>
                                     <th>Image</th>
@@ -36,23 +36,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($beritas as $index => $berita)
+                                @foreach ($notices as $index => $notice)
                                     
                                     <tr>
                                         <td>{{$index+1}}</td>
-                                        <td>{{$berita->name}}</td>
-                                        <td>{{$berita->slug}}</td>
-                                        <td>{{$berita->created_at}}</td>
+                                        <td>{{$notice->name}}</td>
+                                        <td>{{$notice->slug}}</td>
+                                        <td>{{$notice->created_at}}</td>
                                         <td align="center">
-                                            @if($berita->image)
-                                                {{-- <img src="{{asset('storage/'.$berita->image)}}" alt="" width="100px"> --}}
-                                                <img src="{{asset('berita_image/'.$berita->image)}}" alt="" width="100px">
+                                            @if($notice->image)
+                                                {{-- <img src="{{asset('storage/'.$notice->image)}}" alt="" width="100px"> --}}
+                                                <img src="{{asset('notice_image/'.$notice->image)}}" alt="" width="100px">
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{route('beritas.edit', [$berita->id])}}" class="btn btn-sm btn-warning text-light"><i class="fa fa-pencil"></i> Edit</a>
+                                            <a href="{{route('notices.edit', [$notice->id])}}" class="btn btn-sm btn-warning text-light"><i class="fa fa-pencil"></i> Edit</a>
                                                                                     
-                                            <button class="btn btn-sm btn-danger" onclick="deleteConfirm('{{$berita->id}}', '{{$berita->name}}')" data-target="#modalDelete" data-toggle="modal"><i class="fa fa-trash"></i> Delete</button>
+                                            <button class="btn btn-sm btn-danger" onclick="deleteConfirm('{{$notice->id}}', '{{$notice->name}}')" data-target="#modalDelete" data-toggle="modal"><i class="fa fa-trash"></i> Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -69,7 +69,7 @@
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title d-inline">Delete berita</h5>
+                    <h5 class="modal-title d-inline">Hapus Pengumuman</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -96,10 +96,10 @@
 @section('script')
     <script>
         function deleteConfirm(id, name){ 
-            var url = '{{ route("beritas.destroy", ":id") }}';    
+            var url = '{{ route("notices.destroy", ":id") }}';    
                 url = url.replace(':id', id);
             document.getElementById("url").setAttribute("action", url);
-            document.getElementById('message').innerHTML ="Are you sure want to delete berita "+name+" ?"
+            document.getElementById('message').innerHTML ="Are you sure want to delete notice "+name+" ?"
             $('#modalDelete').modal();
         }
   

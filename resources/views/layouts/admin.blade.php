@@ -9,10 +9,10 @@
     
     <title> @yield('title') - IMIGRASI 😎</title>
 
-    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="description" content="IMIGRASI">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png"> 
     <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
@@ -40,8 +40,8 @@
                     <li class="{{$url=='dashboard'?'active':''}}">
                     <a href="{{url('admin/dashboard')}}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
-                    <li class="{{$url=='categories'?'active':''}}">
-                        <a href="{{url('admin/categories')}}"><i class="menu-icon fa fa-list-ul"></i>Categories </a>
+                    <li class="{{$url=='notices'?'active':''}}">
+                        <a href="{{url('admin/notices')}}"><i class="menu-icon fa fa-list-ul"></i>Pengumuman </a>
                     </li>
                     <li class="{{$url=='beritas'?'active':''}}">
                         <a href="{{url('admin/beritas')}}"><i class="menu-icon fa fa-list-ul"></i>Berita </a>
@@ -54,6 +54,9 @@
                     </li>
                     <li class="{{$url=='abouts'?'active':''}}">
                         <a href="{{url('admin/abouts')}}"><i class="menu-icon fa fa-user"></i>About </a>
+                    </li>
+                     <li class="{{$url=='categories'?'active':''}}">
+                        <a href="{{url('admin/categories')}}"><i class="menu-icon fa fa-list-ul"></i>Categories </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
