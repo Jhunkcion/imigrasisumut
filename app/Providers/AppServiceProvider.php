@@ -20,17 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Hindari error saat dijalankan lewat CLI (seperti php artisan migrate, queue, dll)
-        if (app()->runningInConsole()) {
-            return;
-        }
-
-        $host = request()->getHost();
-
-        // Paksa HTTPS jika menggunakan ngrok
-        if (str_contains($host, 'ngrok.io')) {
+        if (config('app.env') === 'local') {
             URL::forceScheme('https');
-            config(['app.url' => 'https://' . $host]);
         }
     }
 }
