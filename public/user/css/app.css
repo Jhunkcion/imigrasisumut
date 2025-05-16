@@ -249,7 +249,10 @@
 
 /* Footer */
 footer {
-  height: 300px;
+  background-color: #0d3359;
+  color: #fff;
+  padding: 40px 0;
+  height: auto; /* Ubah dari fixed height ke auto */
 }
 
 .footer-container {
@@ -271,23 +274,26 @@ footer {
 }
 
 .logo-alamat img {
-  height: 60px;
-  margin-right: 10px;
+  height: 50px;
+  margin: 0 10px 10px 0;
 }
 
 .logo-alamat p {
   margin-top: 10px;
   line-height: 1.6;
+  font-size: 14px;
 }
 
 .kontak p {
   margin-bottom: 10px;
   line-height: 1.6;
+  font-size: 14px;
 }
 
 .footer-col.links ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-col.links ul li {
@@ -298,29 +304,35 @@ footer {
   color: #fff;
   text-decoration: none;
   transition: color 0.3s ease;
+  font-size: 14px;
 }
 
 .footer-col.links ul li a:hover {
   color: #1e90ff;
 }
 
+.footer-social {
+  margin-top: 15px;
+}
+
 .footer-social .social-icons {
-  margin-top: 8px;
+  margin-top: 10px;
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .footer-social .social-icons a {
   display: inline-block;
-  width: 36px;
-  height: 36px;
-  background-color: rgba(255, 255, 255, 0.15);
+  width: 32px;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
-  font-size: 16px;
-  border-radius: 6px;
+  font-size: 14px;
+  border-radius: 4px;
   text-align: center;
-  line-height: 36px;
-  transition: background 0.3s;
+  line-height: 32px;
+  transition: background-color 0.3s;
 }
 
 .footer-social .social-icons a:hover {
@@ -331,11 +343,12 @@ footer {
   background-color: #071739;
   color: #ffffff;
   text-align: center;
-  font-size: 16px;
-  padding: 15px 0;
+  font-size: 14px;
+  padding: 15px 10px;
 }
 
-@media (max-width: 768px) {
+/* RESPONSIVE DESIGN */
+@media (max-width: 992px) {
   .footer-row {
     flex-direction: column;
     align-items: center;
@@ -344,16 +357,34 @@ footer {
 
   .footer-col {
     width: 100%;
+    margin-bottom: 30px;
   }
 
   .footer-social .social-icons {
     justify-content: center;
   }
+
+  .footer-col.links .link-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-col.links ul {
+    padding: 0;
+    margin-bottom: 15px;
+  }
+
+  .footer-col.links h4 {
+    margin-bottom: 10px;
+  }
 }
 
 .footer-col h4 {
   padding-bottom: 20px;
+  font-size: 16px;
 }
+
 
 .link-grid {
   display: flex;

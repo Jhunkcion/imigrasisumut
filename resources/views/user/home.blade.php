@@ -281,7 +281,7 @@
                     <p>{!! $about[0]->caption !!}</p>
                 </div>
                 <div class="tentang-kami-image">
-                    <img src="{{ asset('about_image/' . $about[0]->image) }}" alt="Tentang Kami">
+                    <img src="{{ asset('storage/' . $about[0]->image) }}" alt="Tentang Kami">
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@
             <div class="row">
               <div class="col-3">
                 <div class="card shadow" >
-                  <img src="{{asset('about_image/'.$abouts[0]->image)}}" class="card-img-top" alt="image">
+                  <img src="{{asset('storage/'.$abouts[0]->image)}}" class="card-img-top" alt="image">
                 </div>
               </div>
               <div class="col-9">

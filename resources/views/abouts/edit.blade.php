@@ -22,7 +22,6 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            
                         @endif
                         
                         <h3 class="text-center mt-3 mb-5">Edit About</h3>
@@ -30,7 +29,7 @@
                         <div class="row">
                             <div class="col-3 mt-4">
                                 <div class="card shadow" >
-                                    <img src="{{asset('about_image/'.$about->image)}}" class="card-img-top" alt="image">
+                                    <img src="{{asset('storage/'.$about->image)}}" class="card-img-top" alt="image">
                                 </div>
                             </div>
                             <div class="col-9">
