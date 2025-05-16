@@ -31,7 +31,6 @@
                 <img src="{{ asset('user/images/logo2.png') }}" alt="Logo Kantor Imigrasi">
                 <span>Kantor Imigrasi</span>
             </div>
-            <button class="burger" id="burger-menu">&#9776;</button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#">Beranda</a></li>
                 <li class="dropdown">
@@ -74,6 +73,12 @@
                 </li>
                 <li><a href="#">Kontak</a></li>
             </ul>
+
+            <div class="burger" id="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </nav>
 
 
@@ -139,14 +144,15 @@
                         </ul>
                     </div>
                 </div>
-
-
-                <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
-
-                <div class="footer-bottom">
-                    &copy; {{ date('Y') }} Kantor Imigrasi Kota Medan. All Rights Reserved.
-                </div>
             </div>
+        </div>
+
+
+        <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
+
+        <div class="footer-bottom">
+            &copy; {{ date('Y') }} Kantor Imigrasi Kota Medan. All Rights Reserved.
+        </div>
     </footer>
 
     <!-- JavaScript Libraries -->

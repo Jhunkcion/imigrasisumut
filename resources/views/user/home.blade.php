@@ -86,46 +86,125 @@
 </section>
 
 <!-- Unduhan -->
-<section class="promo-section">
-    <div class="promo-grid">
+<section class="unduhan-section">
+  <div class="unduhan-container">
 
-        <!-- M-Paspor Section -->
-        <div class="promo-card">
-            <div class="promo-text">
-                <h2>Unduh Aplikasi M-Paspor Sekarang!</h2>
-                <p>Ajukan permohonan paspor baru atau penggantian secara daring. Mudah dan nyaman.</p>
-                <div class="store-container">
-                <div class="store-buttons">
-                    <a href="https://play.google.com/store/apps/details?id=id.go.imigrasi.paspor_online&pli=1" target="_blank">
-                    <img src="{{ asset('user/images/gps.png') }}" alt="Google Play">
-                    </a>
-                    <a href="https://apps.apple.com/id/app/m-paspor/id1576336459" target="_blank">
-                    <img src="{{ asset('user/images/aps.png') }}" alt="App Store">
-                    </a>
-                    </div>
-                </div>
-            </div>
-            <div class="promo-image">
-                <img src="{{ asset('user/images/image.png') }}" alt="M-Paspor">
-            </div>
+    <!-- M-Paspor -->
+    <div class="unduhan-card">
+      <div class="unduhan-text">
+        <h2>Unduh Aplikasi M-Paspor Sekarang!</h2>
+        <p>Ajukan permohonan paspor baru atau penggantian secara daring. Mudah dan nyaman.</p>
+        <div class="store-buttons">
+          <a href="https://play.google.com/store/apps/details?id=id.go.imigrasi.paspor_online" target="_blank">
+            <img src="{{ asset('user/images/gps.png') }}" alt="Google Play">
+          </a>
+          <a href="https://apps.apple.com/id/app/m-paspor/id1576336459" target="_blank">
+            <img src="{{ asset('user/images/aps.png') }}" alt="App Store">
+          </a>
         </div>
-
-        <!-- e-Visa Section -->
-        <div class="promo-card reverse">
-            <div class="promo-image">
-                <img src="{{ asset('user/images/image.png') }}" alt="e-Visa" >
-            </div>
-            <div class="promo-text">
-                <h2>Do You Want to Visit Indonesia?</h2>
-                <p>Get an Indonesian visa quick and easy through <br><strong>evisa.imigrasi.go.id</strong></p>
-                <a href="https://evisa.imigrasi.go.id/" target="_blank" class="apply-button">
-                    <i class="fas fa-arrow-right"></i> APPLY NOW
-                </a>
-            </div>
-        </div>
-
+      </div>
+      <div class="unduhan-image">
+        <img src="{{ asset('user/images/image.png') }}" alt="M-Paspor">
+      </div>
     </div>
+
+    <!-- e-Visa -->
+    <div class="unduhan-card reverse">
+      <div class="unduhan-image">
+        <img src="{{ asset('user/images/image.png') }}" alt="e-Visa">
+      </div>
+      <div class="unduhan-text">
+        <h2>Do You Want to Visit Indonesia?</h2>
+        <p>Get an Indonesian visa quick and easy through <br><strong>evisa.imigrasi.go.id</strong></p>
+        <a href="https://evisa.imigrasi.go.id/" target="_blank" class="apply-button">
+          <i class="fas fa-arrow-right"></i> APPLY NOW
+        </a>
+      </div>
+    </div>
+
+  </div>
 </section>
+
+<section id="services-section">
+  <div class="services-container">
+    <div class="services-header">
+      <h3>Yang Bisa Dilakukan Kanim Medan</h3>
+      <p>Berbagai layanan dan sarana digital yang kami sediakan untuk kemudahan Anda.</p>
+    </div>
+
+    <div class="services-row">
+      <a href="https://Youtube.com" target="_blank" class="service-box">
+        <div class="service-icon"><i class="fa fa-shield"></i></div>
+        <div class="service-content">
+          <h4>Survey Penilaian Integritas - KPK</h4>
+          <p>Ikut berkontribusi dalam penguatan integritas melalui survei nasional.</p>
+        </div>
+      </a>
+
+      <a href="https://Youtube.com" target="_blank" class="service-box">
+        <div class="service-icon"><i class="fa fa-box"></i></div>
+        <div class="service-content">
+          <h4>Survey Kepuasan Anti Korupsi</h4>
+          <p>Suara Anda penting dalam memerangi korupsi dan meningkatkan layanan publik.</p>
+        </div>
+      </a>
+
+      <a href="https://Youtube.com" target="_blank" class="service-box">
+        <div class="service-icon"><i class="fa fa-thumbs-up"></i></div>
+        <div class="service-content">
+          <h4>Si Pengadu</h4>
+          <p>Laporkan keluhan atau masukan Anda demi layanan yang lebih baik.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ========================== Layanan Section =========================== -->
+<section class="section-tautan-terkait">
+  <div class="tautan-terkait-wrapper">
+    <div class="tautan-image">
+      <img src="{{ asset('user/images/imigrasi.jpg') }}" alt="Tautan Terkait">
+    </div>
+    <div class="tautan-carousel">
+      <div class="carousel-wrapper" id="carousel-wrapper">
+        <div class="carousel-card">
+          <img src="{{ asset('user/images/icon.png') }}" alt="BPSDM">
+          <p>BPSDM Hukum dan HAM</p>
+        </div>
+        <div class="carousel-card">
+          <img src="{{ asset('user/images/icon.png') }}" alt="Lapor">
+          <p>Lapor</p>
+        </div>
+        <div class="carousel-card">
+          <img src="{{ asset('user/images/icon.png') }}" alt="Kemenkumham">
+          <p>Kemenkumham RI</p>
+        </div>
+        <div class="carousel-card">
+          <img src="{{ asset('user/images/icon.png') }}" alt="Imigrasi">
+          <p>Imigrasi</p>
+        </div>
+        <div class="carousel-card">
+          <img src="{{ asset('user/images/icon.png') }}" alt="Imigration Lounge">
+          <p>Imigration Lounge</p>
+        </div>
+      </div>
+
+      <div class="carousel-nav">
+        <button class="carousel-btn prev" onclick="scrollCarousel(-1)">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next" onclick="scrollCarousel(1)">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
 
 <!-- ========================== Sosial Media Section =========================== -->
@@ -185,7 +264,7 @@
         <p class="text-muted subtitle">Kantor Imigrasi Kota Medan</p>
 
         <div class="video-container mt-4">
-            <iframe src="https://www.youtube.com/embed/QKrWDxG47OM&t=83s frameborder="0"
+            <iframe src="https://www.youtube.com/embed/QKrWDxG47OM&t=83s frameborder=" 0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
             </iframe>
@@ -194,19 +273,19 @@
 </section>
 
 @if(isset($about[0]))
-<section id="tentang-kami" class="tentang-kami-section">
-    <div class="container">
-        <div class="tentang-kami-content">
-            <div class="tentang-kami-text">
-                <h2>Tentang Kami</h2>
-                <p>{!! $about[0]->caption !!}</p>
-            </div>
-            <div class="tentang-kami-image">
-                <img src="{{ asset('about_image/' . $about[0]->image) }}" alt="Tentang Kami">
+    <section id="tentang-kami" class="tentang-kami-section">
+        <div class="container">
+            <div class="tentang-kami-content">
+                <div class="tentang-kami-text">
+                    <h2>Tentang Kami</h2>
+                    <p>{!! $about[0]->caption !!}</p>
+                </div>
+                <div class="tentang-kami-image">
+                    <img src="{{ asset('about_image/' . $about[0]->image) }}" alt="Tentang Kami">
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 @endif
 
 <!--- Berita --->
@@ -214,35 +293,20 @@
     <div class="container">
         <h3 class="berita-title">Berita Terbaru</h3>
         <div class="berita-card-container" style="display: flex; flex-wrap: wrap; gap: 24px;">
-            @foreach ($beritas as $berita)
-            <div class="berita-card"
-                style="flex: 1 1 300px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.1); background-color: #fff;">
-                <img src="{{ asset('berita_image/' . $berita->image) }}" alt="{{ $berita->name }}"
-                    style="width: 100%; height: 180px; object-fit: cover;">
-                <div class="berita-content" style="padding: 16px;">
-                    <h4 style="margin: 0 0 10px 0;">{{ $berita->name }}</h4>
-                    <p style="color: #666; font-size: 14px;">{{ Str::limit($berita->description, 100, '...') }}</p>
+            @foreach($beritas as $berita)
+            <a href="{{ route('user.news', $berita->id) }}" class="berita-card">
+                <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}">
+                <div class="berita-content">
+                    <h4>{{ $berita->judul }}</h4>
+                    <small>{{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}</small>
+                    <p>{{ Str::limit(strip_tags($berita->konten), 100) }}</p>
                 </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-<section id="pengumuman" class="pengumuman-section">
-    <div class="container">
-        <h2 class="section-title">Pengumuman</h2>
-        <div class="pengumuman-grid">
-            @foreach($notices as $notice)
-            <a href="/destination" class="pengumuman-card">
-                <h3 class="card-title">{{ $notice->name }}</h3>
-                <p class="card-date">{{ \Carbon\Carbon::parse($notice->created_at)->format('d M Y') }}</p>
-                <span class="card-link">Selengkapnya →</span>
             </a>
             @endforeach
         </div>
     </div>
 </section>
+
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 @endsection

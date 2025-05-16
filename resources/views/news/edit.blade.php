@@ -16,7 +16,7 @@
 						<div class="col-12 mb-3">
 							<h3 align="center"></h3>
 						</div>
-						<form action="{{route('beritas.update', [$berita->id])}}" method="POST" enctype="multipart/form-data">
+						<form action="{{route('news.update', [$berita->id])}}" method="POST" enctype="multipart/form-data">
 							@csrf
 							<input type="hidden" name="_method" value="PUT">
 							<div class="col-10">
@@ -47,7 +47,7 @@
 									<small class="text-muted">Kosongkan jika tidak ingin mengubah gambar.</small>
 								</div>
 								<div class="mb-3 mt-4">
-									<a href="{{route('beritas.index')}}" class="btn btn-md btn-secondary">Back</a>
+									<a href="{{route('news.index')}}" class="btn btn-md btn-secondary">Back</a>
 									<button type="submit" class="btn btn-md btn-success">Save</button>
 								</div>
 							</div>

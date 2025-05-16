@@ -12,8 +12,10 @@
     <meta name="description" content="IMIGRASI">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png"> 
-    <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -41,10 +43,10 @@
                     <a href="{{url('admin/dashboard')}}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
                     <li class="{{$url=='notices'?'active':''}}">
-                        <a href="{{url('admin/notices')}}"><i class="menu-icon fa fa-list-ul"></i>Pengumuman </a>
+                        <a href="{{url('admin/notices')}}"><i class="menu-icon fa fa-bullhorn"></i>Pengumuman </a>
                     </li>
                     <li class="{{$url=='beritas'?'active':''}}">
-                        <a href="{{url('admin/beritas')}}"><i class="menu-icon fa fa-list-ul"></i>Berita </a>
+                        <a href="{{url('admin/beritas')}}"><i class="menu-icon fa fa-newspaper-o"></i>Berita </a>
                     </li>
                     <li class="{{$url=='articles'?'active':''}}">
                         <a href="{{url('admin/articles')}}"> <i class="menu-icon fa fa-newspaper-o"></i> Articles</a>
@@ -72,7 +74,7 @@
                 <div class="top-left">
                     <div class="navbar-header">
                         {{-- <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('ElaAdmin/images/logo.png')}}" alt="Logo"></a> --}}
-                        <a class="navbar-brand text-success" href="{{url('admin/dashboard')}}" > <i class="fa fa-user-circle-o" style="font-size:34px"></i>  <span class="font-weight-bold " style="font-size:26px">ADMIN</span></a>
+                        <a class="navbar-brand text-success" href="{{url('admin/dashboard')}}" > <i class="" style="font-size:34px"></i>  <span class="font-weight-bold " style="font-size:26px">ADMIN</span></a>
                         <a class="navbar-brand hidden " href="{{url('/')}}"><img src="{{asset('ElaAdmin/images/logo2.png')}}" alt="Logo"></a>
                         <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                     </div>
@@ -85,7 +87,7 @@
                             </a>
 
                             <div class="user-menu dropdown-menu">
-                                <a class="nav-link" href="#"><i class="fa fa-cog"></i>Ganti Password</a>
+                                <a class="nav-link" href="{{ route('password.request') }}"><i class="fa fa-cog"></i>Ganti Password</a>
                                 {{-- <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();"> 
                                     <i class="fa fa-power-off"></i> Logout

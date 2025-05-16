@@ -6,10 +6,9 @@
 
 @section('css')
     <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
-
     <style>
         .traffic-chart {
-            min-height: 200px;
+            min-height: 100px;
         }
     </style>
 @endsection

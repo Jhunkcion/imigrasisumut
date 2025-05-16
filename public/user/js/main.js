@@ -73,3 +73,25 @@ carousel.addEventListener("mouseleave", startAutoSlide);
 
 // Inisialisasi
 updateCarousel();
+
+//Tautan Slide
+  let scrollInterval;
+
+  function scrollCarousel(direction) {
+    const wrapper = document.getElementById('carousel-wrapper');
+    const cardWidth = wrapper.querySelector('.carousel-card').offsetWidth + 20;
+    wrapper.scrollBy({ left: cardWidth * direction, behavior: 'smooth' });
+  }
+
+  function autoScrollCarousel() {
+    scrollInterval = setInterval(() => scrollCarousel(1), 3000);
+  }
+
+  function stopAutoScroll() {
+    clearInterval(scrollInterval);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    autoScrollCarousel();
+  });
+

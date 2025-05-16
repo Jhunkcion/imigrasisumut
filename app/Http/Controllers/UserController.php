@@ -3,9 +3,9 @@ namespace App\Http\Controllers;
 
 use App\About;
 use App\Article;
-use App\Berita;
 use App\Destination;
 use App\Notice;
+use App\Models\Berita;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
