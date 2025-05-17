@@ -32,7 +32,7 @@
                 <span>Kantor Imigrasi</span>
             </div>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#">Beranda</a></li>
+                <li><a href="{{ route('user.home') }}">Beranda</a></li>
                 <li class="dropdown">
                     <div class="dropdown-toggle">Profil</div>
                     <div class="dropdown-content">
@@ -52,7 +52,7 @@
                 <li class="dropdown">
                     <div class="dropdown-toggle">Layanan</div>
                     <div class="dropdown-content">
-                        <a href="#">Paspor</a>
+                        <a href="{{ route('services.index') }}">Paspor</a>
                         <a href="#">Izin Tinggal</a>
                         <a href="#">Kewarganegaraan</a>
                         <div class="dropdown nested-dropdown">

@@ -5,10 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ArticleController;
-
-Route::get('/', function () {
-  return view('user.home');
-});
+use App\Http\Controllers\ServiceController;
 
 // Route::get('/home', 'UserController@home')->name('home');
 // Route::get('/blog', 'UserController@blog')->name('blog');
@@ -20,6 +17,10 @@ Route::get('/', function () {
 // Route Berita Pada User
 Route::get('/', [HomeController::class, 'indexBerita'])->name('user.home');
 Route::get('/berita/{id}', [HomeController::class, 'show_berita'])->name('user.news', );
+
+// Route Service Pada User
+Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
 
 Route::prefix('admin')->group(function () {
   Route::get('/', function () {

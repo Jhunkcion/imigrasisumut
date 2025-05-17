@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Berita;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\ViewErrorBag;
 
@@ -24,4 +25,11 @@ class HomeController extends Controller
         $berita = Berita::findOrFail($id);
         return view('user.news', compact('berita'));
     }
+
+    public function indexService()
+    {
+        $latestServices = Service::latest()->take(3)->get(); // ambil 3 service terbaru
+        return view('home', compact('latestServices'));
+    }
+
 }
