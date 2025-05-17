@@ -148,11 +148,12 @@
         </div>
 
 
-        <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
-
+        <!-- Footer Bottom -->
+        <hr style="border-color: rgba(255,255,255,0.1); margin: 10px; ">
         <div class="footer-bottom">
-            &copy; {{ date('Y') }} Kantor Imigrasi Kota Medan. All Rights Reserved.
+         &copy; 2025 Kantor Imigrasi Kota Medan. All Rights Reserved.
         </div>
+
     </footer>
 
     <!-- JavaScript Libraries -->

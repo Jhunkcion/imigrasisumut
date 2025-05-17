@@ -251,8 +251,9 @@
 footer {
   background-color: #0d3359;
   color: #fff;
-  padding: 40px 0;
-  height: auto; /* Ubah dari fixed height ke auto */
+  padding: 20px 0;
+  height: auto;
+   /* Ubah dari fixed height ke auto */
 }
 
 .footer-container {
@@ -339,20 +340,14 @@ footer {
   background-color: #1e90ff;
 }
 
-.footer-bottom {
-  background-color: #071739;
-  color: #ffffff;
-  text-align: center;
-  font-size: 14px;
-  padding: 15px 10px;
-}
+
 
 /* RESPONSIVE DESIGN */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .footer-row {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start; /* ubah dari center ke flex-start agar teks ke kiri */
+    text-align: left; /* ubah dari center ke left */
   }
 
   .footer-col {
@@ -361,13 +356,13 @@ footer {
   }
 
   .footer-social .social-icons {
-    justify-content: center;
+    justify-content: flex-start; /* supaya ikon juga ikut rata kiri */
   }
 
   .footer-col.links .link-grid {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .footer-col.links ul {
@@ -380,10 +375,18 @@ footer {
   }
 }
 
-.footer-col h4 {
-  padding-bottom: 20px;
-  font-size: 16px;
+
+.footer-bottom {
+  width: 100vw;
+  background-color: #071739;
+  text-align: center;
+  padding: 16px 0;
+  font-size: 14px;
+  margin-top: 24px;
+  color: white;
 }
+
+
 
 
 .link-grid {
