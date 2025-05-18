@@ -15,6 +15,14 @@ class BeritaController extends Controller
         return view('news.index', compact('beritas'));
     }
 
+    public function all()
+    {
+        // Ambil semua data berita dan urutkan dari yang terbaru
+        $news = Berita::latest()->get();
+    
+        // Tampilkan ke view 'news.all_news'
+        return view('news.all_news', compact('news'));
+    }
     /**
      * Show the form for creating a new resource.
      */

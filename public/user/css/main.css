@@ -105,6 +105,122 @@
     }
 }
 
+/* layanan atas*/
+/* Section Informasi Keimigrasian */
+.section-info {
+  background-color: #100f3a;
+  color: white;
+  padding: 60px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.info-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.info-text {
+  flex: 1 1 45%;
+}
+
+.info-text p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.info-text h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.btn-selengkapnya {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #dbc38a;
+  color: #100f3a;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.btn-selengkapnya:hover {
+  background-color: #bba86f;
+}
+
+.info-links {
+  flex: 1 1 50%;
+  display: flex;
+  gap: 20px;
+}
+
+.info-card {
+  position: relative;
+  flex: 1;
+  height: 260px;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-card .overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+}
+
+.info-card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Background color and image overlays */
+.info-card.wni {
+  background: linear-gradient(to bottom, rgba(255, 213, 0, 0.95), rgba(255, 213, 0, 0.95)),
+              url('/path/to/image-wni.jpg') center/cover no-repeat;
+}
+
+.info-card.wna {
+  background: linear-gradient(to bottom, rgba(191, 17, 17, 0.95), rgba(191, 17, 17, 0.95)),
+              url('/path/to/image-wna.jpg') center/cover no-repeat;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .info-container {
+    flex-direction: column;
+  }
+
+  .info-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .info-card {
+    width: 100%;
+  }
+}
+
+
 .layanan-section {
     padding: 60px 20px;
     background-color: #f9f9f9;
@@ -326,49 +442,93 @@
   /* Tentang-kami */
 
 .tentang-kami-section {
-    padding: 60px 20px;
-    background-color: #ffffff;
+  padding: 60px 20px;
+  background-color: #ffffff;
 }
 
 .tentang-kami-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 65px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 65px;
 }
 
 .tentang-kami-text {
-    flex: 1;
-    min-width: 300px;
+  flex: 1;
+  min-width: 300px;
 }
 
 .tentang-kami-text h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #003366;
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #003366;
 }
 
 .tentang-kami-text p {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #555555;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555555;
 }
 
 .tentang-kami-image {
-    flex: 1;
-    text-align: center;
+  flex: 1;
+  text-align: center;
 }
 
 .tentang-kami-image img {
-    max-width: 100%;
-    height: auto;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
 }
+
+/* Responsif tablet & mobile */
+@media (max-width: 768px) {
+  .tentang-kami-content {
+    flex-direction: column;
+    padding-left: 0;
+    gap: 20px;
+  }
+
+  .tentang-kami-text h2 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .tentang-kami-text p {
+    font-size: 15px;
+    text-align: justify;
+  }
+
+  .tentang-kami-image img {
+    max-height: 300px;
+    width: 100%;
+  }
+}
+
+/* Responsif layar sangat kecil (HP kecil) */
+@media (max-width: 480px) {
+  .tentang-kami-section {
+    padding: 40px 15px;
+  }
+
+  .tentang-kami-text h2 {
+    font-size: 22px;
+  }
+
+  .tentang-kami-text p {
+    font-size: 14px;
+  }
+
+  .tentang-kami-image img {
+    max-height: 250px;
+  }
+}
+
 
   
 

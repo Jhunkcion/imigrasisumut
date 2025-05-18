@@ -36,36 +36,33 @@
   </button>
 </div>
 
-<section id="layanan" class="layanan-section">
-  <div class="container">
-    <h2 class="section-title">Layanan Kami</h2>
-    <p class="section-description">Pilih jenis layanan sesuai dengan kebutuhan Anda</p>
-
-    @foreach ($servicesByCategory as $category => $services)
-    <div class="layanan-group mt-4">
-      <h3>
-      Layanan untuk {{ $category === 'WNI' ? 'Warga Negara Indonesia' : 'Warga Negara Asing' }}
-      </h3>
-      <div class="layanan-cards">
-      @forelse($services as $service)
-      <a href="{{ route('user.service', $service->id) }}" class="layanan-card">
-        @if($service->image)
-      <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->title }}"
-      style="width: 60px; height: 60px; object-fit: cover;">
-      @endif
-        <h4>{{ $service->title }}</h4>
-        <p>{{ Str::limit($service->content, 100) }}</p>
-      </a>
-    @empty
-      <p>Tidak ada layanan untuk kategori ini.</p>
-    @endforelse
-      </div>
+<section class="section-info">
+  <div class="info-container">
+    <div class="info-text">
+      <p>Kantor Imigrasi Kelas I Khusus TPI Medan</p>
+      <h2>Informasi Keimigrasian</h2>
+      <p>Kami selalu siap membantu anda menemukan Informasi seputar keimigrasian.</p>
     </div>
-  @endforeach 
+    <div class="info-links">
+      <a href="{{ route('services.all_service', ['category' => 'WNI']) }}" class="info-card wni">
+        <div class="overlay">
+          <h3>PELAYANAN WNI</h3>
+          <p>Temukan beragam pelayanan<br>Paspor Indonesia</p>
+        </div>
+      </a>
+      <a href="{{ route('services.all_service', ['category' => 'WNA']) }}" class="info-card wna">
+        <div class="overlay">
+          <h3>PELAYANAN WNA</h3>
+          <p>Temukan beragam pelayanan<br>Warga Negara Asing</p>
+        </div>
+      </a>
+    </div>
+  </div>
 </section>
 
+
 <!-- Unduhan -->
-<section class="unduhan-section">
+<section class="unduhan-section" data-aos="fade-right">
   <div class="unduhan-container">
 
     <!-- M-Paspor -->
@@ -104,7 +101,7 @@
   </div>
 </section>
 
-<section id="services-section">
+<section id="services-section"  data-aos="fade-up">
   <div class="services-container">
     <div class="services-header">
       <h3>Yang Bisa Dilakukan Kanim Medan</h3>
@@ -142,7 +139,7 @@
 
 
 <!-- ========================== Layanan Section =========================== -->
-<section class="section-tautan-terkait">
+<section class="section-tautan-terkait" data-aos="zoom-in">
   <div class="tautan-terkait-wrapper">
     <div class="tautan-image">
       <img src="{{ asset('user/images/imigrasi.jpg') }}" alt="Tautan Terkait">
@@ -236,7 +233,7 @@
 </section>
 
 <!-- video profile -->
-<section class="video-profil-section py-5 text-center bg-light">
+<section class="video-profil-section py-5 text-center bg-light" data-aos="zoom-in>
   <div class="container">
     <h2 class="fw-bold mb-3">Video Profil</h2>
     <p class="text-muted subtitle">Kantor Imigrasi Kota Medan</p>
@@ -267,7 +264,7 @@
 @endif
 
 <!--- Berita --->
-<section id="berita" class="berita-section wow fadeIn">
+<section id="berita" class="berita-section wow fadeIn" data-aos="fade-up>
   <div class="container">
     <h3 class="berita-title">Berita Terbaru</h3>
     <div class="berita-card-container" style="display: flex; flex-wrap: wrap; gap: 24px;">
@@ -285,8 +282,8 @@
   </div>
 </section>
 
-<section class="pengumuman-container">
-  <h2 class="judul-pengumuman">Pengumuman Terbaru</h2>
+<section class="pengumuman-container" data-aos="fade-up>
+  <h2 class="judul-pengumuman>Pengumuman Terbaru" </h2>
   <div class="card">
     <h3>Penutupan Layanan Sementara</h3>
     <div class="tanggal">Diposting: 16 Mei 2025</div>

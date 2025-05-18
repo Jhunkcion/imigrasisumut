@@ -8,12 +8,14 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ServiceController;
 
 
-// Route Berita Pada User
 Route::get('/', [HomeController::class, 'index'])->name('user.home');
+
+// Route Berita Pada User
+Route::get('/berita', [BeritaController::class, 'all'])->name('news.all_news');
 Route::get('/berita/{id}', [HomeController::class, 'show_berita'])->name('user.news', );
 
 // Route Service Pada User
-Route::get('/services', [ServiceController::class, 'all'])->name('user.all_service');
+Route::get('/services', [ServiceController::class, 'all'])->name('services.all_service');
 Route::get('/services/{id}', [HomeController::class, 'show_service'])->name('user.service');
 
 Route::prefix('admin')->group(function () {

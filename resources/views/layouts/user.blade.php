@@ -19,17 +19,20 @@
     <!-- Main Stylesheet File -->
     <link href="{{asset('user/css/app.css')}}" rel="stylesheet">
     <link href="{{asset('user/css/main.css')}}" rel="stylesheet">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
 
     @php
-        $url = request()->segment(1);
+    $url = request()->segment(1);
     @endphp
     <header>
         <nav class="nav container">
             <div class="nav_data">
-                <a href="" class="nav_logo">
+                <a href="{{route('user.home')}}" class="nav_logo">
                     <img src="{{asset('')}}" alt="">Imigrasi Sumut
                 </a>
 
@@ -41,25 +44,57 @@
 
             <div class="nav_menu show-menu" id="nav-menu">
                 <ul class="nav_list">
-                    <li><a href="#" class="nav_link">Beranda</a></li>
-
-                    <li><a href="#" class="nav_link">Informasi Publik</a></li>
+                    <li><a href="{{route('user.home')}}" class="nav_link">Beranda</a></li>
 
                     <li class="dropdown_item">
                         <div class="nav_link">
-                            Layanan Publik<i class='bx bx-chevron-down dropdown_arrow'></i>
+                            Informasi Publik <i class='bx bx-chevron-down dropdown_arrow'></i>
                         </div>
                         <ul class="dropdown_menu">
                             <li>
-                                <a href="#" class="dropdown_link">Warga Negara Indonesia</a>
+                                <a href="#" class="dropdown_link">IKM dan IPK</a>
                             </li>
                             <li>
-                                <a href="#" class="dropdown_link">Warga Negara Asing</a>
+                                <a href="#" class="dropdown_link">Standar Pelayanan</a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown_link">LAKIP</a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown_link">DIPA</a>
                             </li>
                         </ul>
                     </li>
 
-                    <li><a href="#" class="nav_link">Ruang Berita</a></li>
+                    <li class="dropdown_item">
+                        <div class="nav_link">Layanan Publik<i class='bx bx-chevron-down dropdown_arrow'></i>
+                        </div>
+                        <ul class="dropdown_menu">
+                            <li>
+                       <a href="{{ route('services.all_service', ['category' => 'WNI']) }}" class="dropdown_link">Warga Negara Indonesia</a>
+
+                            </li>
+                            <li>
+                               <a href="{{ route('services.all_service', ['category' => 'WNA']) }}" class="dropdown_link">Warga Negara Asing</a>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown_item">
+                        <div class="nav_link">
+                            Ruang Berita <i class='bx bx-chevron-down dropdown_arrow'></i>
+                        </div>
+                        <ul class="dropdown_menu">
+                            <li>
+                                <a href="{{ route('news.all_news') }}" class="dropdown_link">Berita</a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown_link">Pengumuman</a>
+                            </li>
+                        </ul>
+                    </li>
+
 
                     <li class="dropdown_item">
                         <div class="nav_link">
@@ -148,6 +183,9 @@
     <!-- JavaScript Libraries -->
     <script src="{{asset('user/js/app.js')}}"></script>
     <script src="{{asset('user/js/main.js')}}"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{{ asset('app/js/main.js') }}"></script>
 </body>
 
 </html>

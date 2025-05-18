@@ -58,11 +58,22 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function all()
-    {
-        $services = Service::latest()->get(); // semua layanan
-        return view('user.all_service', compact('services'));
-    }
+   public function all(Request $request)
+{
+    $category = $request->query('category'); // Ambil query category (WNI/WNA)
+
+    $services = Service::query()
+        ->when($category, function ($query, $category) {
+            $query->where('category', $category);
+        })
+        ->latest()
+        ->get();
+
+    return view('services.all_service', compact('services', 'category'));
+}
+
+
+
 
 
 

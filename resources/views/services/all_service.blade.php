@@ -1,4 +1,4 @@
-@extends('layouts.user') <!-- ganti sesuai layout kamu -->
+@extends('layouts.user')
 
 @section('title', 'Semua Layanan')
 
@@ -6,6 +6,21 @@
 <div class="container py-5">
     <h2 class="mb-4">Semua Layanan</h2>
 
+    {{-- Filter Kategori --}}
+    <div class="mb-4">
+    <a href="{{ route('services.all_service') }}" class="btn {{ request('category') == '' ? 'btn-success fw-bold' : 'btn-outline-success' }}">
+        Semua
+    </a>
+    <a href="{{ route('services.all_service', ['category' => 'WNI']) }}" class="btn {{ request('category') == 'WNI' ? 'btn-success fw-bold' : 'btn-outline-success' }}">
+        WNI
+    </a>
+    <a href="{{ route('services.all_service', ['category' => 'WNA']) }}" class="btn {{ request('category') == 'WNA' ? 'btn-success fw-bold' : 'btn-outline-success' }}">
+        WNA
+    </a>
+</div>
+
+
+    {{-- Layanan List --}}
     <div class="row">
         @forelse ($services as $service)
             <div class="col-md-4 mb-4">
@@ -21,7 +36,7 @@
                 </div>
             </div>
         @empty
-            <p>Tidak ada layanan yang tersedia.</p>
+            <p class="text-muted">Tidak ada layanan untuk kategori ini.</p>
         @endforelse
     </div>
 </div>

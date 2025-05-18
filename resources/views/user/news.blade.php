@@ -8,5 +8,10 @@
     <div class="konten-berita mt-4">
         {!! $berita->konten !!}
     </div>
+
+    <!-- Tombol Kembali -->
+    <div class="mt-4">
+        <a href="{{ route('news.all_news') }}" class="btn btn-secondary">← Kembali ke Berita</a>
+    </div>
 </div>
 @endsection
