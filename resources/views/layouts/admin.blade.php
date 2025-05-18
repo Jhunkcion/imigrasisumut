@@ -48,18 +48,12 @@
                     <li class="{{$url=='beritas'?'active':''}}">
                         <a href="{{url('admin/beritas')}}"><i class="menu-icon fa fa-newspaper-o"></i>Berita </a>
                     </li>
-                    <li class="{{$url=='articles'?'active':''}}">
-                        <a href="{{url('admin/articles')}}"> <i class="menu-icon fa fa-newspaper-o"></i> Articles</a>
-                    </li>
-                    <li class="{{$url=='destinations'?'active':''}}">
-                        <a href="{{url('admin/destinations')}}"><i class="menu-icon fa fa-paper-plane-o"></i>Destinations </a>
+                    <li class="{{$url=='services'?'active':''}}">
+                        <a href="{{url('admin/services')}}"><i class="menu-icon fa fa-newspaper-o"></i>Layanan </a>
                     </li>
                     <li class="{{$url=='abouts'?'active':''}}">
                         <a href="{{url('admin/abouts')}}"><i class="menu-icon fa fa-user"></i>About </a>
-                    </li>
-                     <li class="{{$url=='categories'?'active':''}}">
-                        <a href="{{url('admin/categories')}}"><i class="menu-icon fa fa-list-ul"></i>Categories </a>
-                    </li>
+                    </li
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

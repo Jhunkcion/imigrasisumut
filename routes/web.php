@@ -7,20 +7,14 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ServiceController;
 
-// Route::get('/home', 'UserController@home')->name('home');
-// Route::get('/blog', 'UserController@blog')->name('blog');
-// Route::get('/blog/{slug}', 'UserController@show_article')->name('blog.show');
-// Route::get('/destination', 'UserController@destination')->name('destination');
-// Route::get('/destination/{slug}', 'UserController@show_destination')->name('destination.show');
-// Route::get('/contact', 'UserController@contact')->name('contact');
 
 // Route Berita Pada User
-Route::get('/', [HomeController::class, 'indexBerita'])->name('user.home');
+Route::get('/', [HomeController::class, 'index'])->name('user.home');
 Route::get('/berita/{id}', [HomeController::class, 'show_berita'])->name('user.news', );
 
 // Route Service Pada User
-Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
-Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
+Route::get('/services', [ServiceController::class, 'all'])->name('user.all_service');
+Route::get('/services/{id}', [HomeController::class, 'show_service'])->name('user.service');
 
 Route::prefix('admin')->group(function () {
   Route::get('/', function () {
@@ -63,9 +57,12 @@ Route::prefix('admin')->group(function () {
   Route::delete('/beritas/{id}', [BeritaController::class, 'destroy'])->name('news.destroy');
   Route::patch('/admin/news/{id}/publish', [BeritaController::class, 'publish'])->name('news.publish');
 
-  // route article
-  Route::post('/articles/upload', [ArticleController::class, 'upload'])->name('articles.upload')->middleware('auth');
-  Route::resource('/articles', ArticleController::class)->middleware('auth');
+  Route::get('/services', [ServiceController::class, 'adminIndex'])->name('services.index');
+  Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
+  Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+  Route::get('/services/{id}/edit', [ServiceController::class, 'edit'])->name('services.edit');
+  Route::put('/services/{id}', [ServiceController::class, 'update'])->name('service.update');
+  Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
 
 
 
@@ -74,9 +71,9 @@ Route::prefix('admin')->group(function () {
   Route::resource('/destinations', 'DestinationController')->middleware('auth');
 
   // Route about
-  Route::get('/abouts', 'AboutController@index')->name('abouts.index')->middleware('auth');
-  Route::get('/abouts/{about}/edit', 'AboutController@edit')->name('abouts.edit')->middleware('auth');
-  Route::put('/abouts/{about}', 'AboutController@update')->name('abouts.update')->middleware('auth');
+  // Route::get('/abouts', 'AboutController@index')->name('abouts.index')->middleware('auth');
+  // Route::get('/abouts/{about}/edit', 'AboutController@edit')->name('abouts.edit')->middleware('auth');
+  // Route::put('/abouts/{about}', 'AboutController@update')->name('abouts.update')->middleware('auth');
 
 
 

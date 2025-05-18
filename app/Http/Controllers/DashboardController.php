@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use Illuminate\Http\Request;
-use App\Article;
 
 class DashboardController extends Controller
 {
@@ -15,8 +15,8 @@ class DashboardController extends Controller
     public function index()
     {
         $data = [
-            'draft'     => Article::where('status', 'DRAFT')->count(),
-            'publish'   => Article::where('status', 'PUBLISH')->count()
+            'draft'     => Berita::where('status', 'DRAFT')->count(),
+            'publish'   => Berita::where('status', 'PUBLISH')->count()
         ];
         return view('dashboards.index', ['data'=>$data]);
     }

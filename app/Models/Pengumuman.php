@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Pengumuman extends Model
 {
     use HasFactory;
 
-    // Field yang diizinkan untuk mass assignment
+    protected $table = 'beritas'; // nama tabel
+
     protected $fillable = [
-        'title',
-        'category',
-        'content',
-        'image',
+        'judul',
+        'konten',
+        'tanggal',
     ];
 }
