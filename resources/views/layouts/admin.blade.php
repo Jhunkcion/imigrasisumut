@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <title> @yield('title') - IMIGRASI 😎</title>
 
     <meta name="description" content="IMIGRASI">
@@ -23,7 +23,7 @@
 
     <link rel="stylesheet" href="{{asset('ElaAdmin/css/cs-skin-elastic.css')}}">
     <link rel="stylesheet" href="{{asset('ElaAdmin/css/style.css')}}">
-    
+
     @yield('css')
 
 </head>
@@ -42,14 +42,14 @@
                     <li class="{{$url=='dashboard'?'active':''}}">
                     <a href="{{url('admin/dashboard')}}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
-                    <li class="{{$url=='notices'?'active':''}}">
-                        <a href="{{url('admin/notices')}}"><i class="menu-icon fa fa-bullhorn"></i>Pengumuman </a>
+                    <li class="{{$url=='announcements'?'active':''}}">
+                        <a href="{{url('admin/announcements')}}"><i class="menu-icon fa fa-bullhorn"></i>Pengumuman </a>
                     </li>
                     <li class="{{$url=='beritas'?'active':''}}">
                         <a href="{{url('admin/beritas')}}"><i class="menu-icon fa fa-newspaper-o"></i>Berita </a>
                     </li>
                     <li class="{{$url=='services'?'active':''}}">
-                        <a href="{{url('admin/services')}}"><i class="menu-icon fa fa-newspaper-o"></i>Layanan </a>
+                        <a href="{{url('admin/services')}}"><i class="menu-icon fa fa-rss"></i>Layanan </a>
                     </li>
                     <li class="{{$url=='abouts'?'active':''}}">
                         <a href="{{url('admin/abouts')}}"><i class="menu-icon fa fa-user"></i>About </a>
@@ -62,14 +62,14 @@
 
 
     <!-- Right Panel -->
-    <div id="right-panel" class="right-panel">
+      <div id="right-panel" class="right-panel">
         <!-- Header-->
             <header id="header" class="header">
                 <div class="top-left">
                     <div class="navbar-header">
                         {{-- <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('ElaAdmin/images/logo.png')}}" alt="Logo"></a> --}}
-                        <a class="navbar-brand text-success" href="{{url('admin/dashboard')}}" > <i class="" style="font-size:34px"></i>  <span class="font-weight-bold " style="font-size:26px">ADMIN</span></a>
-                        <a class="navbar-brand hidden " href="{{url('/')}}"><img src="{{asset('ElaAdmin/images/logo2.png')}}" alt="Logo"></a>
+                        <a class="navbar-brand text-light" href="{{url('admin/dashboard')}}" > <i class="fa fa-user-circle-o" style="font-size:34px"></i>  <span class="font-weight-bold " style="font-size:26px">Administrator</span></a>
+                        <a class="navbar-brand hidden " href="{{url('/')}}"><img src="{{asset('ElaAdmin/images/logo1.png')}}" alt="Logo"></a>
                         <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                     </div>
                 </div>
@@ -81,16 +81,16 @@
                             </a>
 
                             <div class="user-menu dropdown-menu">
-                                <a class="nav-link" href="{{ route('password.request') }}"><i class="fa fa-cog"></i>Ganti Password</a>
+                                <a class="nav-link" href="{{ route('admin.password.update') }}"><i class="fa fa-cog"></i>Ganti Password</a>
                                 {{-- <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();"> 
+                                document.getElementById('logout-form').submit();">
                                     <i class="fa fa-power-off"></i> Logout
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form> --}}
 
-                                <div class="nav-link" style="cursor:pointer" onclick="logout()" data-target="#modalLogout" data-toggle="modal"> 
+                                <div class="nav-link" style="cursor:pointer" onclick="logout()" data-target="#modalLogout" data-toggle="modal">
                                     <i class="fa fa-power-off"></i> Logout
                                 </div>
 
@@ -103,7 +103,7 @@
                 </div>
             </header>
         <!-- /#header -->
-        
+
         <div class="breadcrumbs mt-3">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
@@ -132,9 +132,9 @@
             <div class="content">
                 <!-- Animated -->
                 <div class="animated fadeIn">
-                    
+
                     @yield('content')
-                    
+
                 </div>
                 <!-- .animated -->
             </div>
@@ -169,12 +169,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure want to end this session?
+                    Apa anda yakin ingin logout?
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <form action="" id="url-logout" method="POST" class="d-inline">
-                    @csrf 
+                    @csrf
                     <button type="submit" class="btn btn-danger">Logout</button>
                 </form>
                 </div>
@@ -197,16 +197,16 @@
         });
 
         // Logout
-        function logout(){ 
-            var url = '{{ route("logout") }}';    
+        function logout(){
+            var url = '{{ route("logout") }}';
             document.getElementById("url-logout").setAttribute("action", url);
             $('#modalLogout').modal();
         }
     </script>
-    
+
     <!--Local Stuff-->
     @yield('script')
-    
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
@@ -215,6 +215,6 @@
 
 
 
-    
+
 </body>
 </html>

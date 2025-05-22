@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="my-3 text-right">
-                        <a href="{{ route('news.create') }}" class="btn btn-sm btn-success">
+                        <a href="{{ route('news.create') }}" class="btn btn-sm btn-warning">
                             <i class="fa fa-plus"></i> Create
                         </a>
                     </div>
@@ -26,12 +26,12 @@
                     @endif
 
                     <table class="table table-striped table-bordered">
-                        <thead class="text-light" style="background-color:#33b751 !important">
+                        <thead class="text-light" style="background-color:#06213d !important">
                             <tr class="text-center">
                                 <th style="width:10px">No</th>
                                 <th>Judul</th>
-                                <th>Konten</th> <!-- Kolom baru -->
-                                <th>Tanggal Dibuat</th>
+                                <th class="text-center">Konten</th>
+                                <th>Tanggal</th>
                                 <th>Gambar</th>
                                 <th style="width:165px">Aksi</th>
                                 <th>Status</th>
@@ -42,8 +42,7 @@
                                 <tr class="text-center">
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $berita->judul }}</td>
-                                    <td>{{ \Illuminate\Support\Str::limit($berita->konten, 100) }}</td>
-                                    <!-- Konten dipotong 100 karakter -->
+                                    <td class="text-center">{{ \Illuminate\Support\Str::limit($berita->konten, 100) }}</td>
                                     <td>{{ \Carbon\Carbon::parse($berita->created_at)->format('d M Y') }}</td>
                                     <td>
                                         @if($berita->gambar)
@@ -58,24 +57,28 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('news.edit', $berita->id) }}"
-                                            class="btn btn-sm btn-warning text-light">
-                                            <i class="fa fa-pencil"></i> Edit
-                                        </a>
-                                        <button class="btn btn-sm btn-danger"
-                                            onclick="deleteConfirm('{{ $berita->id }}', '{{ $berita->judul}}')"
-                                            data-target="#modalDelete" data-toggle="modal">
-                                            <i class="fa fa-trash"></i> Delete
-                                        </button>
-                                        @if ($berita->status === 'draft')
-                                            <form action="{{ route('news.publish', $berita->id) }}" method="POST"
-                                                style="display:inline;">
-                                                @csrf
-                                                @method('PATCH')
-                                                <button type="submit">Publish</button>
-                                            </form>
-                                        @endif
-                                    </td>
+    <div class="d-flex flex-column align-items-center gap-1">
+        <a href="{{ route('news.edit', $berita->id) }}" class="btn btn-sm btn-warning text-light mb-1 w-100">
+            <i class="fa fa-pencil"></i> Edit
+        </a>
+        <button class="btn btn-sm btn-danger w-100 mb-1"
+            onclick="deleteConfirm('{{ $berita->id }}', '{{ $berita->judul}}')"
+            data-target="#modalDelete" data-toggle="modal">
+            <i class="fa fa-trash"></i> Delete
+        </button>
+
+        @if ($berita->status === 'draft')
+            <form action="{{ route('news.publish', $berita->id) }}" method="POST" class="w-100">
+                @csrf
+                @method('PATCH')
+                <button type="submit" class="btn btn-sm btn-success">
+                    Publish
+                </button>
+            </form>
+        @endif
+    </div>
+</td>
+
                                 </tr>
                             @endforeach
                         </tbody>

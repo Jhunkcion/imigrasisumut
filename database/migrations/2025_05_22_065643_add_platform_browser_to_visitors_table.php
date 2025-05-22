@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengumumen', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->date('tanggal');
-            $table->text('konten');
-            $table->timestamps();
-        });
+        Schema::table('visitors', function (Blueprint $table) {
+        $table->string('platform')->nullable()->after('device');
+        $table->string('browser')->nullable()->after('platform');
+    });
     }
 
     /**
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengumumen');
+         Schema::table('visitors', function (Blueprint $table) {
+        $table->dropColumn(['platform', 'browser']);
+    });
     }
 };

@@ -5,15 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pengumuman extends Model
+class Announcement extends Model
 {
     use HasFactory;
 
-    protected $table = 'beritas'; // nama tabel
+    protected $table = 'announcements'; 
 
     protected $fillable = [
-        'judul',
-        'konten',
+        'title', 'content', 'tanggal',
+    ];
+
+    protected $dates = [
         'tanggal',
     ];
 }

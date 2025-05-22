@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -14,11 +15,35 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $data = [
-            'draft'     => Berita::where('status', 'DRAFT')->count(),
-            'publish'   => Berita::where('status', 'PUBLISH')->count()
+        // ambil data visitor per bulan
+        $visitors = DB::table('visitors')
+            ->select(DB::raw('MONTH(visited_at) as month'), DB::raw('count(*) as total'))
+            ->whereYear('visited_at', date('Y'))
+            ->groupBy(DB::raw('MONTH(visited_at)'))
+            ->orderBy('month')
+            ->get();
+
+        // siapkan label dan data
+        $labels = [];
+        $data   = [];
+
+        foreach ($visitors as $v) {
+            $labels[] = Carbon::create()->month($v->month)->format('F'); // Jan, Feb, ...
+            $data[]   = $v->total;
+        }
+
+        $dataDashboard = [
+            'draft'         => Berita::where('status', 'DRAFT')->count(),
+            'publish'       => Berita::where('status', 'PUBLISH')->count(),
+            'totalVisitors' => DB::table('visitors')->count(),
+            'todayVisitors' => DB::table('visitors')
+                ->whereDate('visited_at', today())
+                ->count(),
+            'chartLabels'   => $labels,
+            'chartData'     => $data,
         ];
-        return view('dashboards.index', ['data'=>$data]);
+
+        return view('dashboards.index', ['data' => $dataDashboard]);
     }
 
     /**

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 class BeritaController extends Controller
 {
 
-    public function adminIndex()
+    public function index()
     {
         $beritas = Berita::latest()->get();
         return view('news.index', compact('beritas'));

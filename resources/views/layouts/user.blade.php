@@ -19,7 +19,7 @@
     <!-- Main Stylesheet File -->
     <link href="{{asset('user/css/app.css')}}" rel="stylesheet">
     <link href="{{asset('user/css/main.css')}}" rel="stylesheet">
-
+    
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
@@ -36,13 +36,13 @@
                     <img src="{{asset('')}}" alt="">Imigrasi Sumut
                 </a>
 
-                <div class="nav_toggle show-icon" id="nav-toggle">
+                <div class="nav_toggle" id="nav-toggle">
                     <i class='bx bx-menu nav_burger'></i>
                     <i class='bx bx-chevron-left nav_close'></i>
                 </div>
             </div>
 
-            <div class="nav_menu show-menu" id="nav-menu">
+            <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
                     <li><a href="{{route('user.home')}}" class="nav_link">Beranda</a></li>
 
@@ -55,13 +55,13 @@
                                 <a href="#" class="dropdown_link">IKM dan IPK</a>
                             </li>
                             <li>
-                                <a href="#" class="dropdown_link">Standar Pelayanan</a>
+                                <a href="{{ route('standar-pelayanan') }}" class="dropdown_link">Standar Pelayanan</a>
                             </li>
                             <li>
-                                <a href="#" class="dropdown_link">LAKIP</a>
+                                <a href="{{ route('lakip') }}" class="dropdown_link">LAKIP</a>
                             </li>
                             <li>
-                                <a href="#" class="dropdown_link">DIPA</a>
+                                <a href="{{ route('dipa') }}" class="dropdown_link">DIPA</a>
                             </li>
                         </ul>
                     </li>
@@ -90,23 +90,39 @@
                                 <a href="{{ route('news.all_news') }}" class="dropdown_link">Berita</a>
                             </li>
                             <li>
-                                <a href="#" class="dropdown_link">Pengumuman</a>
+                                <a href="{{ route('announcements.all_announcement') }}" class="dropdown_link">Pengumuman</a>
                             </li>
                         </ul>
                     </li>
 
-
+                    <li>
+                        <a href="{{ route('zona-integritas') }}" class="nav_link {{ request()->routeIs('zona-integritas') ? 'active' : '' }}">
+                            Zona Integritas
+                        </a>
+                    </li>
+                    
                     <li class="dropdown_item">
                         <div class="nav_link">
-                            Profil<i class='bx bx-chevron-down dropdown_arrow'></i>
+                            Tentang Kami<i class='bx bx-chevron-down dropdown_arrow'></i>
                         </div>
                         <ul class="dropdown_menu">
                             <li>
-                                <a href="#" class="dropdown_link">Kontak</a>
+                                <a href="#footer" class="dropdown_link">Kontak</a>
                             </li>
                             <li>
-                                <a href="#" class="dropdown_link">Tentang Kami</a>
+                            <a href="{{ route('tentang-kami') }}" class="dropdown_link {{ request()->routeIs('tentang-kami') ? 'active' : '' }}">
+                                Profil Kantor</a>
                             </li>
+                            <li>
+                                <a href="{{ route('alamat-kami') }}" class="dropdown_link {{ request()->routeIs('alamat-kami') ? 'active' : '' }}">
+                                    Alamat Kami
+                                </a>
+                            </li>
+                                <li>
+                        <a href="{{ route('struktur-organisasi') }}" class="dropdown_link {{ request()->routeIs('struktur-organisasi') ? 'active' : '' }}">
+                            Struktur Organisasi
+                        </a>
+                        </li>
                         </ul>
                     </li>
                 </ul>
@@ -185,7 +201,7 @@
     <script src="{{asset('user/js/main.js')}}"></script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="{{ asset('app/js/main.js') }}"></script>
+    @stack('scripts')
 </body>
 
 </html>

@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('user/images/image.png') }}" alt="Slide 2">
+      <img src="{{ asset('user/images/imigrasi.png') }}" alt="Slide 2">
       <div class="carousel-caption">
         <h2>Antrean Online Praktis</h2>
         <p>Daftar layanan tanpa harus datang langsung ke kantor.</p>
@@ -101,7 +101,7 @@
   </div>
 </section>
 
-<section id="services-section"  data-aos="fade-up">
+<section id="services-section"  data-aos="fade-left">
   <div class="services-container">
     <div class="services-header">
       <h3>Yang Bisa Dilakukan Kanim Medan</h3>
@@ -184,7 +184,7 @@
 
 
 <!-- ========================== Sosial Media Section =========================== -->
-<section id="sosial-media" style="background-color:rgb(210, 210, 210); padding: 50px 0;">
+<section id="sosial-media" style="background-color:rgb(210, 210, 210); padding: 50px 0;" data-aos="zoom-in">
   <div class="container-sosmed">
 
     <!-- Kartu Ikon Sosial Media -->
@@ -232,20 +232,24 @@
   </div>
 </section>
 
-<!-- video profile -->
-<section class="video-profil-section py-5 text-center bg-light" data-aos="zoom-in>
-  <div class="container">
-    <h2 class="fw-bold mb-3">Video Profil</h2>
-    <p class="text-muted subtitle">Kantor Imigrasi Kota Medan</p>
+<section class="video-profil-section py-5 text-center bg-light" data-aos="zoom-in">
+<div class="video-profil-section">
+  <h2>Video Profil</h2>
+  <p>Kantor Imigrasi Kota Medan</p>
 
-    <div class="video-container mt-4">
-      <iframe src="https://www.youtube.com/embed/QKrWDxG47OM&t=83s frameborder=" 0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+  <div class="video-wrapper">
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/QKrWDxG47OM?start=83" 
+        title="Video Profil"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
     </div>
   </div>
+</div>
 </section>
+
 
 @if(isset($about[0]))
   <section id="tentang-kami" class="tentang-kami-section">
@@ -282,42 +286,18 @@
   </div>
 </section>
 
-<section class="pengumuman-container" data-aos="fade-up>
-  <h2 class="judul-pengumuman>Pengumuman Terbaru" </h2>
+<section class="pengumuman-container" data-aos="fade-up">
+  <h2 class="judul-pengumuman">Pengumuman Terbaru </h2>
+  @foreach($announcements as $item)
   <div class="card">
-    <h3>Penutupan Layanan Sementara</h3>
-    <div class="tanggal">Diposting: 16 Mei 2025</div>
+    <h3>{{ $item->title }}</h3>
+    <div class="tanggal">Diposting: {{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</div>
     <div class="konten">
-      Dalam rangka Hari Lahir Pancasila, seluruh layanan Imigrasi akan ditutup sementara pada tanggal 1 Juni 2025.
-      Pelayanan akan dibuka kembali pada 3 Juni 2025. Kami menghimbau kepada seluruh pemohon untuk menyesuaikan jadwal
-      kunjungan Anda. Terima kasih atas perhatian dan kerja samanya.
+      {{ Str::limit($item->content, 200) }}
     </div>
-    <a href="#" class="read-more">Selengkapnya...</a>
+    <a href="{{ route('user.announcement', $item->id) }}">Selengkapnya...</a>
   </div>
-
-  <div class="card">
-    <h3>Penerapan Sistem Antrean Online</h3>
-    <div class="tanggal">Diposting: 10 Mei 2025</div>
-    <div class="konten">
-      Mulai bulan depan, sistem antrean online akan diberlakukan secara penuh di Kantor Imigrasi. Pemohon diwajibkan
-      melakukan pemesanan antrean secara daring sebelum datang ke kantor. Informasi dan panduan tersedia di situs
-      resmi
-      kami.
-    </div>
-    <a href="#" class="read-more">Selengkapnya...</a>
-  </div>
-
-  <div class="card">
-    <h3>Penerapan Sistem Antrean Online</h3>
-    <div class="tanggal">Diposting: 10 Mei 2025</div>
-    <div class="konten">
-      Mulai bulan depan, sistem antrean online akan diberlakukan secara penuh di Kantor Imigrasi. Pemohon diwajibkan
-      melakukan pemesanan antrean secara daring sebelum datang ke kantor. Informasi dan panduan tersedia di situs
-      resmi
-      kami.
-    </div>
-    <a href="#" class="read-more">Selengkapnya...</a>
-  </div>
+  @endforeach
 </section>
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

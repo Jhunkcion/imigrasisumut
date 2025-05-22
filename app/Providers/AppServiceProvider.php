@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,17 +22,27 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Hindari error saat dijalankan lewat CLI (seperti php artisan migrate)
-        if (app()->runningInConsole()) {
-            return;
+        // Tetap pakai HTTPS kalau di local
+        if (config('app.env') === 'local') {
+            URL::forceScheme('https');
         }
 
-        $host = request()->getHost();
+        // Log pengunjung (1x per IP per hari)
+        if (!app()->runningInConsole()) {
+            $ip = Request::ip();
+            $today = now()->toDateString();
 
-        // Deteksi jika menggunakan ngrok (otomatis paksa HTTPS)
-        if (str_contains($host, 'ngrok.io')) {
-            URL::forceScheme('https');
-            config(['app.url' => 'https://' . $host]);
+            $alreadyVisited = DB::table('visitors')
+                ->where('ip_address', $ip)
+                ->whereDate('visited_at', $today)
+                ->exists();
+
+            if (!$alreadyVisited) {
+                DB::table('visitors')->insert([
+                    'ip_address' => $ip,
+                    'visited_at' => now()
+                ]);
+            }
         }
     }
 }

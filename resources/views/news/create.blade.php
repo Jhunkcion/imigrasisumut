@@ -2,7 +2,7 @@
 
 @section('title', 'Create Berita')
 
-@section('breadcrumbs', 'Beritas')
+@section('breadcrumbs', 'Berita')
 
 @section('second-breadcrumb')
     <li>Create</li>
@@ -55,9 +55,9 @@
                             <div class="invalid-feedback">{{ $errors->first('gambar') }}</div>
                         </div>
 
-                        <div class="mb-3 mt-4">
+                        <div class="mb-3 mt-4 d-flex ">
                             <a href="{{ route('news.index') }}" class="btn btn-md btn-secondary">Kembali</a>
-                            <button type="submit">Simpan sebagai Draft</button>
+                            <button type="submit" class="btn btn-md btn-primary ml-2">Simpan sebagai Draft</button>
                         </div>
                     </div>
                 </form>

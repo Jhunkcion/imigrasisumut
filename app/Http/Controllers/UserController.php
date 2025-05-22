@@ -24,9 +24,4 @@ class UserController extends Controller
         return view('user/home', $data);
     }
 
-    public function contact()
-    {
-        return view('user/contact');
-    }
-
 }
