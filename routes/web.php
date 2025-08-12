@@ -1,14 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\VisitorController;
+use App\Http\Controllers\Auth\VerifyOtpController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,6 @@ Route::get('/dipa', [ProfilController::class, 'dipa'])->name('dipa');
 Route::get('/lakip', [ProfilController::class, 'lakip'])->name('lakip');
 Route::get('/standar-pelayanan', [ProfilController::class, 'standarPelayanan'])->name('standar-pelayanan');
 Route::get('/zona-integritas', [ProfilController::class, 'zonaIntegritas'])->name('zona-integritas');
-
-
-
 
 /* Berita */
 Route::get('/berita', [BeritaController::class, 'all'])->name('news.all_news');
@@ -59,9 +57,11 @@ Route::prefix('admin')->group(function () {
     })->name('register');
 
     /* Laravel auth routes (prefix otomatis /admin/...) */
-    Auth::routes([
-        'register' => false, // kalau memang mau menon-aktifkan register sepenuhnya
-    ]);
+    Auth::routes(
+        //     [
+        //     'register' => false,
+        // ]
+    );
 
     /*
     |----------------------------------------------------------------------
@@ -119,6 +119,8 @@ Route::prefix('admin')->group(function () {
             'destroy' => 'services.destroy',
         ]);
 
-        /* Tambah route admin lain di sini… */
+        /* VISITOR */
+        Route::get('/visitors', [VisitorController::class, 'index'])->name('visitors.index');
+
     });
 });

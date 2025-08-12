@@ -17,7 +17,6 @@
     display: flex;
     transition: transform 0.6s ease;
     will-change: transform;
-    padding-top: 40px;
 }
 
 .carousel-item {
@@ -34,12 +33,25 @@
 }
 
 .carousel-caption {
-    position: absolute;
-    bottom: 80px;
-    left: 40px;
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 12px 16px;
+  border-radius: 6px;
+  max-width: 90%;
+  box-sizing: border-box;
+}
+
+.carousel-caption h2 {
+  font-size: 1.5rem;
+  margin: 0 0 10px;
+}
+
+.carousel-caption p {
+  font-size: 1rem;
+  margin: 0;
 }
 
 .carousel-control {
@@ -60,11 +72,11 @@
 }
 
 .carousel-control.prev {
-    left: 15px;
+    left: 10px;
 }
 
 .carousel-control.next {
-    right: 15px;
+    right: 10px;
 }
 
 @keyframes fadeInUp {
@@ -76,13 +88,6 @@
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@media (max-width: 768px) {
-    .carousel-control {
-        font-size: 1.5rem;
-        padding: 5px;
     }
 }
 
@@ -107,48 +112,15 @@
 }
 
 @media (max-width: 768px) {
-  .carousel-container {
-    max-height: 400px; /* Reduce max height on tablets and smaller */
-  }
-
+  .carousel-container,
   .carousel-item {
+    max-height: 400px; /* Reduce max height on tablets and smaller */
     height: 400px; /* Adjust height accordingly */
   }
 
   .carousel-caption {
     bottom: 40px;
-    left: 20px;
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-
-  .carousel-caption h2 {
-    font-size: 1.5rem;
-  }
-
-  .carousel-caption p {
-    font-size: 1rem;
-  }
-
-  .carousel-control {
-    font-size: 2.5rem;
-    padding: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-container {
-    max-height: 250px; /* Further reduce height on small phones */
-  }
-
-  .carousel-item {
-    height: 250px;
-  }
-
-  .carousel-caption {
-    bottom: 20px;
-    left: 10px;
-    padding: 8px;
+    padding: 10px 12px;
   }
 
   .carousel-caption h2 {
@@ -156,12 +128,36 @@
   }
 
   .carousel-caption p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .carousel-control {
-    font-size: 2rem;
-    padding: 8px;
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container,
+  .carousel-item {
+    max-height: 250px; /* Further reduce height on small phones */
+    height: 250px; 
+  }
+
+  .carousel-caption {
+    bottom: 20px;
+    padding: 8px 10px;
+  }
+
+  .carousel-caption h2 {
+    font-size: 1rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.8rem;
+  }
+
+  .carousel-control {
+    font-size: 1.5rem;
   }
 }
 
@@ -1608,6 +1604,9 @@ section.pengumuman-container {
   flex-wrap: wrap;
   gap: 20px;
   padding: 80px 20px;
+  max-width: 1140px;
+  margin: 0 auto; /* Tengah */
+  min-height: calc(100vh - 200px);
 }
 
 /* Sidebar */
@@ -1728,6 +1727,9 @@ section.pengumuman-container {
   flex-wrap: wrap;
   gap: 20px;
   padding: 80px 20px;
+  max-width: 1140px;
+  margin: 0 auto; /* Tengah */
+  min-height: calc(100vh - 200px); /* agar dorong footer ke bawah */
 }
 
 .lakip-sidebar {
@@ -1805,6 +1807,7 @@ section.pengumuman-container {
   .lakip-wrapper {
     flex-direction: column;
     padding: 60px 16px;
+    min-height: calc(100vh - 160px);
   }
 
   .lakip-sidebar {
@@ -1835,12 +1838,17 @@ section.pengumuman-container {
   }
 }
 
+
 /* === Standar Pelayanan Page === */
 .standar-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   padding: 80px 20px;
+  max-width: 1140px;
+  margin: 0 auto; /* Tengah */
+  min-height: calc(100vh - 200px);
+  
 }
 
 .standar-sidebar {
@@ -1852,15 +1860,17 @@ section.pengumuman-container {
 }
 
 .standar-sidebar h3 {
-  font-size: 18px;
+  font-size: 16px;
   color: #003366;
-  margin-bottom: 12px;
+  margin: 0;
 }
 
 .standar-nav-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  font-size: 16px;
+  font-weight: bold; 
 }
 
 .standar-nav-link {

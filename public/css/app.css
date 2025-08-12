@@ -11039,6 +11039,16 @@ button.bg-dark:focus {
   text-align: center !important;
 }
 
+.text-limit {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    max-width: 300px; /* bisa disesuaikan */
+}
+
 @media (min-width: 576px) {
   .text-sm-left {
     text-align: left !important;

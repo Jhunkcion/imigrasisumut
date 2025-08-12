@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2025 at 04:54 PM
+-- Generation Time: Aug 12, 2025 at 03:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -120,8 +120,7 @@ CREATE TABLE `beritas` (
 
 INSERT INTO `beritas` (`id`, `judul`, `konten`, `gambar`, `tanggal`, `status`, `created_at`, `updated_at`) VALUES
 (3, 'Kebanjiran', 'sdsdsd', 'beritas/M8iOYHeQidumOR4AosG2NRXRXsguYzNk5Ov24pXJ.jpg', '2025-05-21', 'publish', '2025-05-21 20:56:21', '2025-05-21 20:56:31'),
-(4, 'dasda', 'asdssa', 'beritas/QBgS4xp9O09zvmt9IX29Q5AqwjgA5vboxQZFZcVE.jpg', '2025-05-30', 'publish', '2025-05-21 21:04:42', '2025-05-21 21:12:21'),
-(5, 'Kebanjiran', 'sdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddadsdsadaddad', 'beritas/487ZkoFTikgxr6FcmqLLvYayMfGICiJv2xIWz0NG.jpg', '2025-05-24', 'publish', '2025-05-21 21:33:33', '2025-05-22 01:29:27');
+(4, 'dasda', 'asdssa', 'beritas/QBgS4xp9O09zvmt9IX29Q5AqwjgA5vboxQZFZcVE.jpg', '2025-05-30', 'publish', '2025-05-21 21:04:42', '2025-05-21 21:12:21');
 
 -- --------------------------------------------------------
 
@@ -215,7 +214,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2025_05_22_045530_add_user_agent_and_url_to_visitors_table', 9),
 (20, '2025_05_22_050736_add_user_agent_and_url_to_visitors_table', 10),
 (21, '2025_05_22_062747_add_device_to_visitors_table', 11),
-(22, '2025_05_22_065643_add_platform_browser_to_visitors_table', 12);
+(22, '2025_05_22_065643_add_platform_browser_to_visitors_table', 12),
+(23, '2025_05_28_064502_add_otp_and_verification_to_users_table', 13);
 
 -- --------------------------------------------------------
 
@@ -274,15 +274,17 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `otp` varchar(255) DEFAULT NULL,
+  `is_verified` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'admin@gmail.com', NULL, '$2y$10$..F0/mP/h7khpXT8WjQg5O4ON9JNdyqtVE1Bf2dQ7y5KsFNg231IK', NULL, '2025-05-17 23:52:47', '2025-05-20 08:31:18');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `otp`, `is_verified`) VALUES
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$z8hHTv/4nXLhLoeEvCVknO91KSiB27NdqXhpn.twiwqyYOtmXyo06', NULL, '2025-05-28 00:48:35', '2025-05-28 00:48:35', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -316,7 +318,40 @@ INSERT INTO `visitors` (`id`, `ip_address`, `user_agent`, `device`, `platform`, 
 (8, '127.0.0.1', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Mobile Safari/537.36', 'WebKit', 'AndroidOS', 'Chrome', 'http://a190-2001-448a-1070-ebf7-149-2710-7d01-ec86.ngrok-free.app', '2025-05-22 06:34:44'),
 (9, '127.0.0.1', 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.5 Mobile/15E148 Safari/604.1', 'iPhone', 'iOS', 'Safari', 'http://a190-2001-448a-1070-ebf7-149-2710-7d01-ec86.ngrok-free.app', '2025-05-22 06:38:51'),
 (10, '127.0.0.1', 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/99.0.4844.59 Mobile/15E148 Safari/604.1', 'iPhone', 'iOS', 'Chrome', 'http://a190-2001-448a-1070-ebf7-149-2710-7d01-ec86.ngrok-free.app', '2025-05-22 06:40:28'),
-(11, '127.0.0.1', 'WhatsApp/2.23.20.0', 'Unknown Device', 'Unknown Platform', 'Unknown Browser', 'http://4206-2001-448a-1070-ebf7-149-2710-7d01-ec86.ngrok-free.app', '2025-05-22 07:13:38');
+(11, '127.0.0.1', 'WhatsApp/2.23.20.0', 'Unknown Device', 'Unknown Platform', 'Unknown Browser', 'http://4206-2001-448a-1070-ebf7-149-2710-7d01-ec86.ngrok-free.app', '2025-05-22 07:13:38'),
+(12, '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36 Edg/136.0.0.0', 'Nexus', 'AndroidOS', 'Edge', 'http://a345-2001-448a-1070-ebf7-149-2710-7d01-ec86.ngrok-free.app', '2025-05-22 08:20:18'),
+(13, '127.0.0.1', 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1 Edg/136.0.0.0', 'iPhone', 'iOS', 'Edge', 'http://a345-2001-448a-1070-ebf7-149-2710-7d01-ec86.ngrok-free.app/berita', '2025-05-22 08:20:49'),
+(14, '192.168.100.58', NULL, NULL, NULL, NULL, NULL, '2025-05-24 00:51:12'),
+(15, '192.168.100.58', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://192.168.100.58:7009', '2025-05-24 00:51:13'),
+(16, '192.168.1.38', NULL, NULL, NULL, NULL, NULL, '2025-05-27 22:50:35'),
+(17, '192.168.1.38', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://192.168.1.38:6969', '2025-05-27 22:50:36'),
+(18, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, '2025-05-27 23:23:00'),
+(19, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://127.0.0.1:8000', '2025-05-27 23:23:00'),
+(20, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, '2025-06-04 19:33:19'),
+(21, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://127.0.0.1:8000', '2025-06-04 19:33:20'),
+(22, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, '2025-06-09 22:07:13'),
+(23, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://127.0.0.1:8060', '2025-06-09 22:07:13'),
+(24, '127.0.0.1', 'WhatsApp/2.2522.2 W', 'Unknown Device', 'Unknown Platform', 'Unknown Browser', 'http://0033-103-163-21-33.ngrok-free.app', '2025-06-09 22:10:09'),
+(25, '127.0.0.1', 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/99.0.4844.59 Mobile/15E148 Safari/604.1', 'iPhone', 'iOS', 'Chrome', 'http://0033-103-163-21-33.ngrok-free.app', '2025-06-09 22:10:40'),
+(26, '127.0.0.1', 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_7_11 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6.1 Mobile/15E148 Safari/604.1', 'iPhone', 'iOS', 'Safari', 'http://0033-103-163-21-33.ngrok-free.app', '2025-06-09 22:11:56'),
+(27, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, '2025-06-11 00:16:08'),
+(28, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://127.0.0.1:8000', '2025-06-11 00:16:08'),
+(29, '192.168.1.52', NULL, NULL, NULL, NULL, NULL, '2025-06-11 18:41:57'),
+(30, '192.168.1.52', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://192.168.1.52:6969', '2025-06-11 18:41:58'),
+(31, '192.168.1.62', NULL, NULL, NULL, NULL, NULL, '2025-06-11 18:44:53'),
+(32, '192.168.1.62', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'WebKit', 'Windows', 'Chrome', 'http://192.168.1.52:6969', '2025-06-11 18:44:53'),
+(33, '192.168.1.62', 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1', 'iPhone', 'iOS', 'Safari', 'http://192.168.1.52:6969/announcements', '2025-06-11 18:57:09'),
+(34, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, '2025-06-15 19:09:31'),
+(35, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://127.0.0.1:8000', '2025-06-15 19:09:32'),
+(36, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15 Edg/137.0.0.0', 'Macintosh', 'OS X', 'Edge', 'http://127.0.0.1:8000/admin', '2025-06-15 19:45:50'),
+(37, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, '2025-06-18 09:26:56'),
+(38, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://127.0.0.1:8000', '2025-06-18 09:26:57'),
+(39, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, '2025-07-08 19:03:36'),
+(40, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://127.0.0.1:8000', '2025-07-08 19:03:37'),
+(41, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, '2025-07-15 18:18:34'),
+(42, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://127.0.0.1:8000', '2025-07-15 18:18:34'),
+(43, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, '2025-08-12 05:59:50'),
+(44, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0', 'WebKit', 'Windows', 'Edge', 'http://127.0.0.1:8000', '2025-08-12 05:59:50');
 
 --
 -- Indexes for dumped tables
@@ -436,7 +471,7 @@ ALTER TABLE `article_category`
 -- AUTO_INCREMENT for table `beritas`
 --
 ALTER TABLE `beritas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -460,7 +495,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `services`
@@ -478,7 +513,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- Constraints for dumped tables

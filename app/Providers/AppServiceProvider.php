@@ -20,10 +20,12 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
+    
+    //kalo mau jalan di public pake !== 'local'
     public function boot(): void
     {
         // Tetap pakai HTTPS kalau di local
-        if (config('app.env') === 'local') {
+        if (config('app.env') !== 'local') {
             URL::forceScheme('https');
         }
 

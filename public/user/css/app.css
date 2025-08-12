@@ -13,10 +13,6 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.container {
-  max-width: 1120px;
-  margin-inline: 1.5rem;
-}
 
 /* NAVBAR */
 
@@ -85,14 +81,16 @@ header {
   .nav_menu {
     position: absolute;
     left: 0;
-    top: 2.5rem;
+    top: 3.5rem;
     width: 100%;
     height: calc(100vh - 3.5rem);
     overflow: auto;
     pointer-events: none;
     opacity: 0;
     transition: top .4s opacity .3s;
+    
   }
+  
 
   .nav_menu::-webkit-scrollbar {
     width: 0;

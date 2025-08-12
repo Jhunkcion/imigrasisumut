@@ -1,6 +1,5 @@
 @extends('layouts.user')
 
-
 @section('content')
 
 <!-- Carousel -->

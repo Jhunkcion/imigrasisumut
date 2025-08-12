@@ -55,7 +55,15 @@
                         <a href="{{url('admin/abouts')}}"><i class="menu-icon fa fa-user"></i>About </a>
                     </li
                 </ul>
-            </div><!-- /.navbar-collapse -->
+                <li class="{{$url=='visitors'?'active':''}}">
+                        <a href="{{url('admin/visitors')}}"><i class="menu-icon fa fa-users"></i>Visitor </a>
+                    </li
+   </ul>
+                    <li class="{{$url=='visitors'?'active':''}}">
+                        <a href="{{url('admin/visitors')}}"><i class="menu-icon fa fa-file"></i>Penomoran Otomatis </a>
+                    </li
+                    
+            </div>
         </nav>
     </aside>
     <!-- /#left-panel -->

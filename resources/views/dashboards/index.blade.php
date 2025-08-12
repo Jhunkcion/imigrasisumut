@@ -56,7 +56,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-12">
-                    <div class="card">
+                    <div class="card" id="visitor-card">
                         <div class="card-body">
                             <div class="stat-widget-five">
                                 <div class="stat-icon dib flat-color-4">
@@ -74,6 +74,7 @@
                 </div>
             </div>
         <!-- /Widgets -->
+
         <!--  Traffic  -->
             <div class="row">
                 <div class="col-lg-12">
@@ -85,7 +86,8 @@
                             <div class="col-lg-12">
                                 <div class="card-body">
                                     <!-- <canvas id="TrafficChart"></canvas>   -->
-                                  <div id="visitor-chart" class="traffic-chart mt-4"></div>
+                                  <div id="visitor-chart" class="traffic-chart mt-4">
+                                  </div>
                                 </div>
                             </div>
                         </div> <!-- /.row -->
@@ -111,62 +113,86 @@
         font-weight: bold;
     }
 </style>
-
 <script>
-    jQuery(document).ready(function($) {
-        "use strict";
+    let chart;
 
-        // ===================== Visitor Card Hold Feature =====================
-        let card = document.getElementById('visitor-card');
-        let count = document.getElementById('visitor-count');
-        let label = document.getElementById('visitor-label');
+    const initialLabels = @json($data['chartLabels']);
+    const initialData = @json($data['chartData']);
 
-        let isHolding = false;
-        let holdTimer;
+    function renderChart(labels, data, range = 'month') {
+    let chartWidth = '100%';
 
-        let today = {{ $data['todayVisitors'] }};
-        let total = {{ $data['totalVisitors'] }};
+    // Tentukan lebar berdasarkan range
+    if (range === 'day') {
+        chartWidth = `${labels.length * 60}px`; // contoh: 7 hari * 60px = 420px
+    } else if (range === 'week') {
+        chartWidth = `${labels.length * 80}px`; // contoh: 6 minggu * 80px
+    } else {
+        chartWidth = '100%'; // default bulanan
+    }
 
-        if (card && count && label) {
-            card.addEventListener('mousedown', function () {
-                isHolding = true;
-                holdTimer = setTimeout(() => {
-                    if (isHolding) {
-                        count.classList.add('fade-text');
-                        count.innerText = total;
-                        label.innerText = "Total Visitor";
-                    }
-                }, 600);
-            });
+    // Set width DOM chart secara manual
+    document.getElementById('visitor-chart').style.width = chartWidth;
 
-            document.addEventListener('mouseup', function () {
-                if (isHolding) {
-                    clearTimeout(holdTimer);
-                    count.classList.remove('fade-text');
-                    count.innerText = today;
-                    label.innerText = "Visitor Hari Ini";
-                    isHolding = false;
-                }
-            });
-        }
-
-            const labels = @json($data['chartLabels']);
-    const data = @json($data['chartData']);
-
-    var chart = new Chartist.Line('#traffic-chart', {
-        labels: labels,
-        series: [data]
-    }, {
+    const options = {
         low: 0,
         showArea: true,
-        showLine: false,
-        showPoint: false,
-        fullWidth: true,
+        showLine: true,
+        showPoint: true,
+        fullWidth: false, // <--- ini penting
+        axisY: {
+            onlyInteger: true,
+            offset: 20
+        },
+        chartPadding: {
+            right: 20
+        },
         axisX: {
-            showGrid: true
+            showGrid: true,
+            labelInterpolationFnc: function (value, index) {
+                if (range === 'day' || range === 'week') {
+                    return value;
+                } else {
+                    return index % 2 === 0 ? value : null;
+                }
+            }
         }
+    };
+
+    chart = new Chartist.Line('#visitor-chart', {
+        labels: labels,
+        series: [data]
+    }, options);
+}
+
+
+    function updateChart(labels, data, range) {
+        if (chart) {
+            chart.update({
+                labels: labels,
+                series: [data]
+            });
+        } else {
+            renderChart(labels, data, range);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        renderChart(initialLabels, initialData, 'month');
+
+        document.querySelectorAll('input[name="range"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                const range = this.value;
+                fetch(`/dashboard/traffic-data?range=${range}`)
+                    .then(res => res.json())
+                    .then(result => {
+                        updateChart(result.labels, result.data, range);
+                    });
+            });
+        });
     });
-});
 </script>
+
+
 
 @endsection

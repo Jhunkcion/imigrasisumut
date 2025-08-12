@@ -3,7 +3,7 @@
 @section('content')
 <div class="standar-wrapper">
     <div class="standar-sidebar">
-        <h3>Navigasi</h3>
+        
         <ul class="standar-nav-list">
             <li><a href="#standar" class="standar-nav-link">Standar Pelayanan</a></li>
             <li><a href="#sop" class="standar-nav-link">SOP Pengaduan</a></li>
